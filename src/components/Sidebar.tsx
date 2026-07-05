@@ -1,4 +1,5 @@
-import Logo from '../assets/worldLinkLogo.png'
+import Logo from "../assets/worldLinkLogo.png";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -12,23 +13,30 @@ const Sidebar = () => {
 
           {/* dashboard */}
           <div className="ml-4 my-4">
-            <a href="/">Dashboard</a>
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? "bg-[#003D7C]" : "text-white"
+              }
+            >
+              Dashboard
+            </NavLink>
           </div>
 
           <div className="ml-4 my-4">
-            <a href="/my-plan">My Plan</a>
+            <NavLink to="my-plan">My Plan</NavLink>
           </div>
 
           <div className="ml-4 my-4">
-            <a href="/bills-and-payments">Bills & Payments</a>
+            <NavLink to="bills-and-payments">Bills & Payments</NavLink>
           </div>
 
           <div className="ml-4 my-4">
-            <a href="/supports">Supports</a>
+            <NavLink to="supports">Supports</NavLink>
           </div>
 
           <div className="ml-4 my-4">
-            <a href="/router-settings">Router Settings</a>
+            <NavLink to="router-settings">Router Settings</NavLink>
           </div>
         </div>
       </section>
