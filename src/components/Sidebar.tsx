@@ -12,31 +12,69 @@ const Sidebar = () => {
           </div>
 
           {/* dashboard */}
-          <div className="ml-4 my-4">
+          <div>
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? "bg-[#003D7C]" : "text-white"
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
               }
             >
               Dashboard
             </NavLink>
           </div>
 
-          <div className="ml-4 my-4">
-            <NavLink to="my-plan">My Plan</NavLink>
+          <div>
+            <NavLink
+              to="my-plan"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              My Plan
+            </NavLink>
           </div>
 
-          <div className="ml-4 my-4">
-            <NavLink to="bills-and-payments">Bills & Payments</NavLink>
+          <div>
+            <NavLink
+              to="bills-and-payments"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              Bills & Payments
+            </NavLink>
           </div>
 
-          <div className="ml-4 my-4">
-            <NavLink to="supports">Supports</NavLink>
+          <div>
+            <NavLink
+              to="supports"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              Supports
+            </NavLink>
           </div>
 
-          <div className="ml-4 my-4">
-            <NavLink to="router-settings">Router Settings</NavLink>
+          <div>
+            <NavLink
+              to="router-settings"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              Router Settings
+            </NavLink>
           </div>
         </div>
       </section>
