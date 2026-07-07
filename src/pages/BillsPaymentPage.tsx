@@ -9,6 +9,7 @@ import {
   CalendarSync,
   MoveRight,
   PlusCircle,
+  CreditCard,
 } from "lucide-react";
 
 const BillsPaymentPage = () => {
@@ -45,12 +46,12 @@ const BillsPaymentPage = () => {
               </div>
             </div>
             <div>
-              <button className="bg-[#24389C] text-white px-9 py-3 mb-4 rounded-xl font-semibold shadow-sm hover:bg-[#14288d] duration-200">
+              <button className="bg-[#24389C] cursor-pointer text-white px-9 py-3 mb-4 rounded-xl font-semibold shadow-sm hover:bg-[#14288d] duration-200">
                 Pay Now
               </button>
               <div className="flex flex-row gap-2 text-[#24389C] items-center justify-center">
                 <Download size={12} />
-                <button className="text-[#24389C] text-xs text-center ">
+                <button className="text-[#24389C] cursor-pointer text-xs text-center ">
                 
                 Download Invoice
               </button>
@@ -67,8 +68,7 @@ const BillsPaymentPage = () => {
                 <CalendarSync className="text-[#465AA3]" size={22} />
               </div>
               {/* Toggle  left to do*/}
-              <button className="w-12 h-7 rounded-full bg-[#3046C9] relative">
-                <span className="absolute right-1 top-1 w-5 h-5 rounded-full bg-white"></span>
+              <button className="w-12 h-7 rounded-full bg-[#3046C9]">
               </button>
             </div>
             <div className="my-4">
@@ -97,34 +97,38 @@ const BillsPaymentPage = () => {
           <div className="col-span-9 bg-white rounded-xl shadow-sm p-6">
             <div className="flex flex-row justify-between mb-6">
               <h4 className="font-semibold text-lg">Saved Payment Methods</h4>
-              <button className="flex items-center gap-2 text-[#24389C] ">
+              <button className="flex items-center gap-2 cursor-pointer text-[#24389C] ">
                 <PlusCircle size={18} />
                 Add New</button>
             </div>
-            <div className="flex flex-row justify-between gap-4">
+            <div className="flex flex-row justify-between">
               {/* visa */}
-              <div className="flex flex-row justify-between">
-                <span>image</span>
+              <div className="flex flex-row gap-5 items-center justify-between border border-[#C5C5D44D] rounded-xl py-4.5 px-6">
+                <span>
+                  <CreditCard size={45}/>
+                </span>
                 <div>
-                  <p>Visa Signature</p>
-                  <p>•••• •••• •••• 4421</p>
+                  <p className="text-xs font-semibold tracking-wider">Visa Signature</p>
+                  <p className="text-[#757684] text-sm tracking-wider">•••• •••• •••• 4421</p>
                 </div>
                 <div>
-                  <span>PRIMARY</span>
+                  <p className="uppercase px-2 py-1 text-[10px] text-[#24389C] bg-[#24389C1A] ">Primary</p>
 
-                  <p>Exp: 09/26</p>
+                  <p className="text-xs text-[#757684]">Exp: 09/26</p>
                 </div>
               </div>
 
               {/* mastecard */}
-              <div className="flex flex-row justify-between">
-                <span>image</span>
+              <div className="flex flex-row items-center gap-5 justify-between border border-[#C5C5D44D] rounded-xl py-4.5 px-6">
+                <span>
+                  <CreditCard size={45}/>
+                </span>
                 <div>
-                  <p>Mastercard Gold</p>
-                  <p>•••• •••• •••• 8802</p>
+                  <p className="text-xs font-semibold tracking-wider">Mastercard Gold</p>
+                  <p className="text-[#757684] text-sm tracking-wider">•••• •••• •••• 8802</p>
                 </div>
                 <div>
-                  <p>Exp: 12/25</p>
+                  <p className="text-xs text-[#757684]">Exp: 12/25</p>
                 </div>
               </div>
             </div>
@@ -136,7 +140,7 @@ const BillsPaymentPage = () => {
         </div>
 
         {/* 3 */}
-        <div className="bg-white rounded-t-xl overflow-hidden">
+        <div className="bg-white rounded-t-xl">
           <div className="flex justify-between items-center p-6 border-b-[#C5C5D41A]">
             <div>
               <h2 className="text-lg font-semibold">Billing History</h2>
@@ -173,11 +177,6 @@ const BillsPaymentPage = () => {
                   <td className="px-6 py-7">{item[0]}</td>
                   <td className="px-6 py-7 text-[#24389C]">{item[1]}</td>
                   <td className="px-6 py-7">{item[2]}</td>
-                  {/* <td
-                    className={`px-3 py-1 my-7 mr-6 rounded-full text-sm font-medium ${item[3] == "Paid" ? "text-[#15803D] bg-[#DCFCE7]" : "text-[#B91C1C] bg-[#FEE2E2]"}`}
-                  >
-                    {item[3]}
-                  </td> */}
 
                   <td className="px-8 py-7">
                     <span

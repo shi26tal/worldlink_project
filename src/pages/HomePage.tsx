@@ -5,6 +5,7 @@ import ReferBanner from "../components/ReferBanner";
 import Update from "../assets/icon/update.png";
 import Ticket from "../assets/icon/ticket.png";
 import AI from "../assets/icon/ai.jpg";
+import { ArrowRight } from "lucide-react";
 
 const HomePage = () => {
   return (
@@ -170,7 +171,11 @@ const HomePage = () => {
               <div className="mt-6 px-4 py-2 text-[12px] text-center bg-[#F0FDF4] text-[#16A34A] w-full">Signal Strength: Excellent</div>
               <div className="mt-3 px-4 py-2 text-[12px] text-center bg-[#EFF6FF] text-[#2563EB] w-full">Router Heat: Normal</div>
 
-              <button className="mt-12 text-[#003D7C] text-[16px] cursor-pointer">Run Full Scan</button>
+              <button className="mt-12 text-[#003D7C] text-[16px] items-center flex flex-row gap-2 cursor-pointer">
+                <span>Run Full Scan 
+                  </span>
+                <ArrowRight size={16}/>
+              </button>
             </div>
           </div>
         </div>
