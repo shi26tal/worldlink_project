@@ -53,14 +53,14 @@ const Sidebar = () => {
 
           <div>
             <NavLink
-              to="supports"
+              to="support"
               className={({ isActive }) =>
                 isActive
                   ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
                   : "text-white p-3 block"
               }
             >
-              Supports
+              Support
             </NavLink>
           </div>
 
