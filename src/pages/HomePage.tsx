@@ -6,8 +6,19 @@ import Update from "../assets/icon/update.png";
 import Ticket from "../assets/icon/ticket.png";
 import AI from "../assets/icon/ai.jpg";
 import { ArrowRight } from "lucide-react";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const HomePage = () => {
+  const weeklyData = [
+    { day: "Mon", gb: 110 },
+    { day: "Tue", gb: 200 },
+    { day: "Wed", gb: 150 },
+    { day: "Thu", gb: 75 },
+    { day: "Fri", gb: 60 },
+    { day: "Sat", gb: 110 },
+    { day: "Sun", gb: 140 },
+  ];
+
   return (
     <>
       <div className="bg-[#f8f9fc] ml-64 mt-20 p-6 min-h-screen">
@@ -128,7 +139,35 @@ const HomePage = () => {
 
           {/* WeeklyUsage */}
           <div className="col-span-5 bg-white rounded-xl shadow-md p-8">
-            Weekly Usage
+            <p className="text-[#424751] text-base uppercase tracking-widest mb-5">
+            
+              Weekly Usage (GB)
+            </p>
+
+            <div className="mb-8 flex flex-row gap-2 text-[#424751] text-xs">
+                <button>7 Days</button>
+            <button>30 Days</button>
+
+
+            </div>
+
+          
+            <BarChart width={400} height={300} data={weeklyData}>
+              <Bar dataKey="gb" fill="#4251B6" radius={[20, 20, 20, 20]} barSize={32} />
+              <CartesianGrid stroke="#ccc" vertical={false} />
+              <XAxis
+                dataKey="day"
+                style={{ fill: "#6B7280", fontSize: 14 }}
+                axisLine={false}
+                tickLine={false}
+              />
+
+              <YAxis
+                style={{ fill: "#6B7280", fontSize: 14 }}
+                axisLine={false}
+                tickLine={false}
+              />
+            </BarChart>
           </div>
 
           {/* Latest Ticket */}
@@ -168,13 +207,16 @@ const HomePage = () => {
               <p className="mt-4 text-[#424751] text-center text-[14px]">
                 WorldLink AI has scanned your hardware. No bottlenecks detected.
               </p>
-              <div className="mt-6 px-4 py-2 text-[12px] text-center bg-[#F0FDF4] text-[#16A34A] w-full">Signal Strength: Excellent</div>
-              <div className="mt-3 px-4 py-2 text-[12px] text-center bg-[#EFF6FF] text-[#2563EB] w-full">Router Heat: Normal</div>
+              <div className="mt-6 px-4 py-2 text-[12px] text-center bg-[#F0FDF4] text-[#16A34A] w-full">
+                Signal Strength: Excellent
+              </div>
+              <div className="mt-3 px-4 py-2 text-[12px] text-center bg-[#EFF6FF] text-[#2563EB] w-full">
+                Router Heat: Normal
+              </div>
 
               <button className="mt-12 text-[#003D7C] text-[16px] items-center flex flex-row gap-2 cursor-pointer">
-                <span>Run Full Scan 
-                  </span>
-                <ArrowRight size={16}/>
+                <span>Run Full Scan</span>
+                <ArrowRight size={16} />
               </button>
             </div>
           </div>
