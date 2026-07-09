@@ -1,9 +1,12 @@
 import {
   ArrowRight,
   History,
+  Link2,
+  MapPinPen,
   RouterIcon,
   Ticket,
   TriangleAlert,
+  Zap,
 } from "lucide-react";
 
 const SupportPage = () => {
@@ -116,9 +119,58 @@ const SupportPage = () => {
       </div>
 
       {/* 3 */}
-      <div className="bg-white rounded-2xl shadow-md p-6 h-70 mb-6">FAQ</div>
+      <div className="grid grid-cols-12 gap-6 mb-6">
+        <div className="col-span-12 flex flex-row items-center gap-2">
+          <Zap className="text-[#24389C]" size={20} />
+          <h4 className="text-base">Quick Requests</h4>
+        </div>
+
+        <div className="col-span-6 bg-white rounded-2xl shadow-md p-6">
+          <div className="flex flex-row gap-4 items-center mb-4">
+            <div className="bg-[#24389C1A] rounded-full p-4">
+              <MapPinPen className="text-[#24389C]" size={22} />
+            </div>
+
+            <div>
+              <h5 className="text-[#191C1E] text-base font-bold mb-1">Location Shift</h5>
+              <p className="text-[#454652] text-sm">
+                Moving to a new home? Request a connection transfer to your new
+                address.
+              </p>
+            </div>
+          </div>
+
+          <button className="flex flex-row gap-2 items-center text-[#24389C]">
+            <span className="text-base">Request Now</span>
+            <ArrowRight size={15} />
+          </button>
+        </div>
+
+        <div className="col-span-6 bg-white rounded-2xl shadow-md p-6">
+          <div className="flex flex-row gap-4 items-center mb-4">
+            <div className="bg-[#24389C1A] rounded-full p-4">
+              <Link2 className="text-[#24389C]" size={22} />
+            </div>
+
+            <div>
+              <h5 className="text-[#191C1E] text-base font-bold mb-1">New Connection</h5>
+              <p className="text-[#454652] text-sm">
+               Add a secondary line or recommend WorldLink to a neighbor for rewards.
+              </p>
+            </div>
+          </div>
+
+          <button className="flex flex-row gap-2 items-center text-[#24389C]">
+            <span className="text-base">Request Now</span>
+            <ArrowRight size={15} />
+          </button>
+        </div>
+      </div>
 
       {/* 4 */}
+      <div className="bg-white rounded-2xl shadow-md p-6 h-70 mb-6">FAQ</div>
+
+      {/* 5 */}
       <div className="grid grid-cols-12 gap-6">
         {/* phone */}
         <div className="col-span-4 bg-white rounded-2xl shadow-md p-6"></div>
