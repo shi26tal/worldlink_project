@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import Refer from '../assets/icon/refer.png'
+import { Gift } from 'lucide-react';
 
 const ReferBanner = () => {
 
@@ -10,8 +10,9 @@ const ReferBanner = () => {
   }
 
   return (
-    <div className="h-full bg-[#3F51B5] flex flex-col items-center  justify-center rounded-xl shadow-md px-12 py-8 text-center">
-      <img src={Refer} alt="refer" className="w-8 h-8 mb-5" />
+    <div className="h-full bg-[#3F51B5] flex flex-col items-center  justify-center rounded-xl shadow-md p-8 text-center">
+      
+      <Gift size={46} className='mb-4 text-[#CACFFF]'/>
       <p className="text-[#CACFFF] font-semibold mb-3">Refer & Earn</p>
       <button className="text-[#24389C] px-6 py-3 bg-white rounded-xl w-full cursor-pointer" onClick={handleClick}>
         Refer Now

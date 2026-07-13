@@ -1,18 +1,20 @@
-import SearchIcon from "../assets/icon/search.png";
+
 import Bell from "../assets/icon/belli.png";
 import Profile from "../assets/icon/profile-icon.png";
+import { Search } from "lucide-react";
 
 const Header = () => {
   return (
     <div>
       <header className="fixed top-0 flex flex-row justify-end gap-6 w-full bg-[#f8f9fc] p-5">
-        <div className="flex gap-2 w-68 bg-[#E7E8EB] py-2 px-5 rounded-3xl">
+        <div className="flex gap-2 w-68 bg-[#E7E8EB] text-[#757684] py-2 px-5 rounded-3xl">
           <input
             type="text"
             placeholder="Search devices or settings..."
             className="w-full text-[14px] placeholder:text-[14px]"
           />
-          <img src={SearchIcon} alt="Search" className="w-6 h-6" />
+          <Search size={20} />
+          
         </div>
         <div className="flex items-center">
           <img src={Bell} alt="Notification" className="w-6 h-6 " />

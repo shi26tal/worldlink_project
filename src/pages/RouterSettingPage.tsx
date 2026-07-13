@@ -1,6 +1,6 @@
 const RouterSettingPage = () => {
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-20 p-6 min-h-screen">
+    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
       <div className="mb-2">
         <h1 className="text-[#24389C] text-4xl font-bold tracking-wide mb-2">
           Router Settings

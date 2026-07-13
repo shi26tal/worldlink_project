@@ -23,7 +23,7 @@ const BillsPaymentPage = () => {
   ];
 
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-20 p-6 min-h-screen">
+    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
       <div className="flex flex-col gap-6">
         {/* 1 */}
         <div className="grid grid-cols-12 gap-6">

@@ -1,11 +1,9 @@
 import Live from "../assets/live.png";
 
-import Speed from "../assets/icon/speed.png";
+
 import ReferBanner from "../components/ReferBanner";
-import Update from "../assets/icon/update.png";
-import Ticket from "../assets/icon/ticket.png";
-import AI from "../assets/icon/ai.jpg";
-import { ArrowRight } from "lucide-react";
+
+import { ArrowRight, ArrowUpFromLine, BrainCog, NotepadText, Rocket } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
 const HomePage = () => {
@@ -21,7 +19,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[#f8f9fc] ml-64 mt-20 p-6 min-h-screen">
+      <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
         <div className="grid grid-cols-12 gap-6">
           {/* Live Network Status Card */}
           <div className="col-span-12 justify-between flex bg-white p-8 rounded-lg shadow-md text-[#424751]">
@@ -104,8 +102,8 @@ const HomePage = () => {
             </div>
             <div className="bg-[#C2C6D31A] rounded-xl p-4 mt-8">
               <div className="flex flex-row gap-3">
-                <div className="bg-[#003D7C] rounded-lg p-3">
-                  <img src={Update} alt="update" />
+                <div className="bg-[#003D7C] text-white rounded-lg py-3 px-2" >
+                  <ArrowUpFromLine size={22}/>
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#0D1C2E]">
@@ -128,7 +126,7 @@ const HomePage = () => {
             <div className="bg-white rounded-xl shadow-md p-8">
               <p className="text-[#1E40AF] font-bold mb-6">Speed Test</p>
               <button className="bg-[#4251B6] w-full cursor-pointer text-white rounded-xl flex flex-row items-center justify-center gap-2 px-6 py-3">
-                <img src={Speed} alt="speed" />
+                <Rocket size={20} fill="white"/>
                 <span>Start Test</span>
               </button>
             </div>
@@ -182,8 +180,8 @@ const HomePage = () => {
               </button>
             </div>
             <div className="flex flex-col items-center mt-14">
-              <div className=" p-6 bg-[#F3F4F6] rounded-full">
-                <img src={Ticket} alt="ticket" className="w-8" />
+              <div className="px-5 py-6  bg-[#F3F4F6] rounded-full text-[#9CA3AF]">
+                <NotepadText size={42} />
               </div>
 
               <h3 className="mt-6 font-semibold">No Ticket Yet</h3>
@@ -200,8 +198,8 @@ const HomePage = () => {
           {/* AI Diagnostic */}
           <div className="col-span-3 bg-white rounded-xl shadow-md p-8">
             <div className="flex flex-col items-center mt-4">
-              <div className="p-6 bg-[#F3F4F6] rounded-full">
-                <img src={AI} alt="ai" className="w-8" />
+              <div className="p-6 bg-[#F3F4F6] text-[#003D7C] rounded-full">
+                <BrainCog size={40} />
               </div>
               <h3 className="font-medium mt-4 text-[16px]">AI Diagnostic</h3>
               <p className="mt-4 text-[#424751] text-center text-[14px]">

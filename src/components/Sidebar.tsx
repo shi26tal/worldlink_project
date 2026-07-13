@@ -76,6 +76,32 @@ const Sidebar = () => {
               Router Settings
             </NavLink>
           </div>
+
+          <div>
+            <NavLink
+              to="offers"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              Offers
+            </NavLink>
+          </div>
+
+          <div>
+            <NavLink
+              to="benefits"
+              className={({ isActive }) =>
+                isActive
+                  ? "bg-[#0F4C97] text-white rounded-lg p-3 block"
+                  : "text-white p-3 block"
+              }
+            >
+              Benefits
+            </NavLink>
+          </div>
         </div>
       </section>
     </div>

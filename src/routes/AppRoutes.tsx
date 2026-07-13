@@ -6,6 +6,7 @@ import RouterSettingPage from "../pages/RouterSettingPage";
 import BillsPaymentPage from "../pages/BillsPaymentPage";
 import SupportPage from "../pages/SupportPage";
 import ReferPage from "../pages/ReferPage";
+import Benefits from "../pages/Benefits";
 
 const AppRoutes = () => {
   return (
@@ -17,6 +18,7 @@ const AppRoutes = () => {
         <Route path="router-settings" element={<RouterSettingPage />} />
         <Route path="bills-and-payments" element={<BillsPaymentPage />} />
         <Route path="support" element={<SupportPage />} />
+        <Route path="benefits" element={<Benefits />}></Route>
       </Route>
     </Routes>
   );

@@ -1,12 +1,12 @@
 import { Gift, MoveRight, Plus, Timer, Wifi } from "lucide-react";
 import ReferImg from "../assets/Img.png";
-import { useState } from "react";
+
 
 const ReferPage = () => {
-  const [showOverlay, setShowOverlay] = useState(false);
+  
 
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-20 p-6 min-h-screen">
+    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
       <div className="mb-6">
         <h1 className="text-3xl">Referrals & Rewards</h1>
         <p className="text-[#64748B] text-base">
@@ -74,26 +74,14 @@ const ReferPage = () => {
 
         <div className="px-10 pb-10 flex flex-col gap-4 items-center">
           <button
-            onClick={() => setShowOverlay(true)}
+            
             className="w-full bg-[#3F51B5] shadow-sm text-white rounded-xl py-4 flex items-center justify-center gap-2 "
           >
             <Plus size={20} />
             <span>Refer a friend</span>
           </button>
 
-          {showOverlay && (
-            <>
-              <div
-                onClick={() => setShowOverlay(false)}
-                className="fixed inset-0 bg-black/50 z-40"
-              ></div>
-
-              <div>
-                <h2>Refer a friend</h2>
-                <p>Invite your friend</p>
-              </div>
-            </>
-          )}
+        
 
           <button className="w-full border-2 py-4 border-[#E2E8F0] rounded-xl">
             View refer history
