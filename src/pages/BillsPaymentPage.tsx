@@ -7,9 +7,10 @@ import {
   ChevronRight,
   ChevronLeft,
   CalendarSync,
-  MoveRight,
+  
   PlusCircle,
   CreditCard,
+  ArrowRight,
 } from "lucide-react";
 
 const BillsPaymentPage = () => {
@@ -79,13 +80,13 @@ const BillsPaymentPage = () => {
               </p>
             </div>
 
-            <div className="flex flex-row gap-2 text-sm text-[#24389C]">
+            <div className="flex flex-row items-center gap-2 text-sm text-[#24389C]">
               <button>
                 Manage Auto-pay Settings
                 
               </button>
               <span>
-                  <MoveRight />
+                  <ArrowRight size={16}/>
                 </span>
             </div>
           </div>

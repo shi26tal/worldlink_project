@@ -2,18 +2,20 @@ import {
   ArrowRight,
   CalendarCheck2,
   CalendarClock,
+  CircleCheck,
   Film,
   History,
   ShieldCheck,
   Wifi,
 } from "lucide-react";
+import GaugeComponent from "react-gauge-component";
 
 const MyPlanPage = () => {
   return (
     <div className=" bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
       <div className="flex flex-row justify-between items-center mb-8">
         <div>
-          <h1 className="text-xl font-semibold">My Plan</h1>
+          <h1 className="text-2xl font-semibold">My Plan</h1>
           <p className="text-base text-[#454652]">
             Manage your subscription, view usage trends, and explore upgrades.
           </p>
@@ -29,7 +31,96 @@ const MyPlanPage = () => {
         {/* left */}
         <div className="col-span-7 flex flex-col gap-6">
           {/* plan */}
-          <div className="bg-white rounded-2xl shadow-md p-6 h-160"></div>
+          <div className="bg-white  rounded-2xl shadow-md flex flex-col">
+            <div className=" bg-[#38BDF8] p-6 rounded-2xl flex flex-col gap-8">
+              <h5 className="text-[#0F172A] flex justify-center text-2xl font-bold">
+                My Internet Plan
+              </h5>
+              <div className="relative h-50 flex justify-center items-center">
+                <GaugeComponent
+                  type="radial"
+                  minValue={0}
+                  maxValue={360}
+                  startAngle={-180}
+                  endAngle={180}
+                  arc={{
+                    width: 0.15,
+                    cornerRadius: 0,
+                    subArcs: [{ color: "#3F51B5" }],
+                  }}
+                  labels={{
+                    valueLabel: {
+                      formatTextValue: () => "",
+                    },
+                    tickLabels: {
+                      hideMinMax: true,
+                    },
+                  }}
+                  pointer={{ hide: true }}
+                />
+
+                <div className="absolute flex flex-col items-center">
+                  <span className="text-4xl font-bold text-[#1E293B]">365</span>
+                  <span className="text-base text-[#1E293B]">Days left</span>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div>
+                  <h5 className="text-2xl font-bold">Smart Offer(1TV) 2079 250mbps/12months</h5>
+                <p className="text-[#64748B] text-xl flex flex-row gap-1 justify-center">For uninterrupted service, please <button className="text-[#3F51B5] flex flex-row items-center gap-1 cursor-pointer"><span>Pay Advance</span> <ArrowRight size={18}/> </button></p>
+
+                </div>
+                
+              </div>
+            </div>
+
+
+            <div className="p-6">
+              <div className="px-2 py-1 rounded-sm bg-[#D1FAE5] text-[#047857] w-fit mb-2">
+                <p className="uppercase text-xs font-semibold">Active Plan</p>
+              </div>
+
+              <div className="flex flex-row justify-between pb-6 border-b border-[#F1F5F9]">
+
+                {/* left */}
+                <div>
+                  <h4 className="text-[#3F51B5] text-3xl font-bold">Smart Offer (1TV) 2079</h4>
+                  <p className="text-[#64748B] text-base leading-6">250 mbps / 12 months Package</p>
+                </div>
+
+                    {/* right */}
+                <div>
+
+                  <p className="text-[#94A3B8] text-lg font-semibold"><span className="text-[#3F51B5] text-3xl font-semibold">250</span>Mbps</p>
+                  <p className="uppercase text-[#94A3B8] text-[10px]">Symmetrical speed</p>
+
+                </div>
+
+              </div>
+
+              <div className="flex flex-row justify-between pt-6">
+
+                <div>
+                  <p className="uppercase text-[#94A3B8] text-xs font-semibold">Monthly Billing</p>
+                  <p className="text-[#94A3B8] text-base"><span className="text-[#1E293B]">NPR 1,850</span> /month</p>
+                </div>
+
+                <div>
+                  <p className="uppercase text-[#94A3B8] text-xs font-semibold">Next Renewal</p>
+                  <p className="text-[#1E293B] text-base">Sept 29, 2026</p>
+                </div>
+
+                <div>
+                  <p className="uppercase text-[#94A3B8] text-xs font-semibold">Payment Method</p>
+                  <p className="flex flex-row gap-1 items-center"> <CircleCheck color="white" fill="#10B981" size={18}/> <span className="text-[#1E293B] text-base">Auto-pay On</span></p>
+                </div>
+
+                
+
+              </div>
+
+            </div>
+          </div>
 
           {/* detail */}
           <div className="bg-white rounded-2xl shadow-md p-6">

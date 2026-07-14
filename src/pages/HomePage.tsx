@@ -1,21 +1,39 @@
+import GaugeComponent from "react-gauge-component";
 import Live from "../assets/live.png";
-
 
 import ReferBanner from "../components/ReferBanner";
 
-import { ArrowRight, ArrowUpFromLine, BrainCog, NotepadText, Rocket } from "lucide-react";
+import {
+  ArrowRight,
+  ArrowUpFromLine,
+  BrainCog,
+  NotepadText,
+  Rocket,
+  Square,
+} from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [activeTab, setActiveTab] = useState<"7" | "30">("7");
+
   const weeklyData = [
-    { day: "Mon", gb: 110 },
-    { day: "Tue", gb: 200 },
-    { day: "Wed", gb: 150 },
-    { day: "Thu", gb: 75 },
-    { day: "Fri", gb: 60 },
-    { day: "Sat", gb: 110 },
-    { day: "Sun", gb: 140 },
+    { day: "Mon", upload: 30, download: 80 },
+    { day: "Tue", upload: 50, download: 150 },
+    { day: "Wed", upload: 40, download: 110 },
+    { day: "Thu", upload: 20, download: 55 },
+    { day: "Fri", upload: 15, download: 45 },
+    { day: "Sat", upload: 30, download: 80 },
   ];
+
+  const monthlyData = [
+    { day: "W1", upload: 120, download: 340 },
+    { day: "W2", upload: 140, download: 410 },
+    { day: "W3", upload: 95, download: 280 },
+    { day: "W4", upload: 110, download: 310 },
+  ];
+
+  const currentData = activeTab === "7" ? weeklyData : monthlyData;
 
   return (
     <>
@@ -55,16 +73,40 @@ const HomePage = () => {
             <h3 className="text-[#424751] text-center font-normal tracking-[0.8px] mt-10 mb-6">
               CURRENT DOWNLOAD SPEED
             </h3>
+
             <div className="h-32 flex justify-center items-center">
-              245 Mbps
+              <GaugeComponent
+                value={245}
+                type="semicircle"
+                arc={{
+                  width: 0.1,
+                  colorArray: ["#003D7C"],
+                  subArcs: [{ limit: 500 }],
+                }}
+                labels={{
+                  valueLabel: {
+                    formatTextValue: () => `245\nMbps`,
+                    style: {
+                      fill: "#003D7C",
+                      textShadow: "none",
+                      fontSize: "32px",
+                      whiteSpace: "pre-line",
+                    },
+                  },
+                  tickLabels: {
+                    hideMinMax: true,
+                  },
+                }}
+                pointer={{ hide: true }}
+              />
             </div>
 
-            <div className="flex border-t border-[#C2C6D333] pb-6 pt-6 justify-between">
-              <div className="p-7 pb-0">
+            <div className="flex border-t border-[#C2C6D333] mt-6 px-6 pt-6 items-center justify-between">
+              <div className="flex flex-col items-center">
                 <p>Upload</p>
                 <span>112 Mbps</span>
               </div>
-              <div className="p-7 pb-0">
+              <div className=" flex flex-col items-center">
                 <p>Jitter</p>
                 <span>2 ms</span>
               </div>
@@ -102,8 +144,8 @@ const HomePage = () => {
             </div>
             <div className="bg-[#C2C6D31A] rounded-xl p-4 mt-8">
               <div className="flex flex-row gap-3">
-                <div className="bg-[#003D7C] text-white rounded-lg py-3 px-2" >
-                  <ArrowUpFromLine size={22}/>
+                <div className="bg-[#003D7C] text-white rounded-lg py-3 px-2">
+                  <ArrowUpFromLine size={22} />
                 </div>
                 <div>
                   <h3 className="font-semibold text-[#0D1C2E]">
@@ -126,7 +168,7 @@ const HomePage = () => {
             <div className="bg-white rounded-xl shadow-md p-8">
               <p className="text-[#1E40AF] font-bold mb-6">Speed Test</p>
               <button className="bg-[#4251B6] w-full cursor-pointer text-white rounded-xl flex flex-row items-center justify-center gap-2 px-6 py-3">
-                <Rocket size={20} fill="white"/>
+                <Rocket size={20} fill="white" />
                 <span>Start Test</span>
               </button>
             </div>
@@ -138,20 +180,38 @@ const HomePage = () => {
           {/* WeeklyUsage */}
           <div className="col-span-5 bg-white rounded-xl shadow-md p-8">
             <p className="text-[#424751] text-base uppercase tracking-widest mb-5">
-            
               Weekly Usage (GB)
             </p>
 
-            <div className="mb-8 flex flex-row gap-2 text-[#424751] text-xs">
-                <button>7 Days</button>
-            <button>30 Days</button>
-
-
+            <div className="mb-5 flex flex-row gap-2 text-[#424751] text-xs">
+              <button
+                onClick={() => setActiveTab("7")}
+                className={` cursor-pointer text-xs px-3 py-1  ${activeTab === "7" ? "bg-[#DCE9FF] text-[#0D1C2E] rounded-lg" : "bg-white  text-[#424751 ]"}`}
+              >
+                7 Days
+              </button>
+              <button
+                onClick={() => setActiveTab("30")}
+                className={`cursor-pointer text-xs px-3 py-1 ${activeTab === "30" ? "bg-[#DCE9FF] text-[#0D1C2E]  rounded-lg" : "bg-white  text-[#424751 ]"}`}
+              >
+                30 Days
+              </button>
             </div>
 
-          
-            <BarChart width={400} height={300} data={weeklyData}>
-              <Bar dataKey="gb" fill="#4251B6" radius={[20, 20, 20, 20]} barSize={32} />
+            <div className="mb-5 flex flex-row justify-center gap-6">
+              <div className="flex flex-row gap-1">
+                <Square fill="#4251B6" stroke-width='0' />
+                <span>Upload</span>
+
+              </div>
+              <div className="flex flex-row gap-1">
+                <Square fill="#a0a8da" stroke-width='0' />
+                <span>Download</span>
+
+              </div>
+            </div>
+
+            <BarChart width={400} height={300} data={currentData}>
               <CartesianGrid stroke="#ccc" vertical={false} />
               <XAxis
                 dataKey="day"
@@ -164,6 +224,19 @@ const HomePage = () => {
                 style={{ fill: "#6B7280", fontSize: 14 }}
                 axisLine={false}
                 tickLine={false}
+              />
+
+              <Bar
+                dataKey="upload"
+                fill="#4251B6"
+                radius={[20, 20, 20, 20]}
+                barSize={20}
+              />
+              <Bar
+                dataKey="download"
+                fill="#a0a8da"
+                radius={[20, 20, 20, 20]}
+                barSize={20}
               />
             </BarChart>
           </div>

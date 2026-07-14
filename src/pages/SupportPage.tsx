@@ -20,7 +20,7 @@ const SupportPage = () => {
       {/* head customer support */}
       <div className="flex flex-row justify-between items-center mb-8">
         <div>
-          <h1 className="text-xl font-semibold">Customer Support</h1>
+          <h1 className="text-2xl font-semibold">Customer Support</h1>
           <p className="text-base text-[#454652]">
             How can we help you today with your WorldLink connection?
           </p>
@@ -130,6 +130,7 @@ const SupportPage = () => {
           <h4 className="text-base">Quick Requests</h4>
         </div>
 
+        {/* location shift */}
         <div className="col-span-6 bg-white rounded-2xl shadow-md p-6">
           <div className="flex flex-row gap-4 items-center mb-4">
             <div className="bg-[#24389C1A] rounded-full p-4">
@@ -153,6 +154,7 @@ const SupportPage = () => {
           </button>
         </div>
 
+          {/* new connection */}
         <div className="col-span-6 bg-white rounded-2xl shadow-md p-6">
           <div className="flex flex-row gap-4 items-center mb-4">
             <div className="bg-[#24389C1A] rounded-full p-4">
@@ -165,7 +167,7 @@ const SupportPage = () => {
               </h5>
               <p className="text-[#454652] text-sm">
                 Add a secondary line or recommend WorldLink to a neighbor for
-                rewards.
+                exciting rewards.
               </p>
             </div>
           </div>
@@ -177,7 +179,8 @@ const SupportPage = () => {
         </div>
       </div>
 
-      {/* 4 */}
+
+          {/* 4 */}
       <div className="bg-white rounded-2xl shadow-md p-6 h-auto mb-6">
         <div className="flex flex-row gap-2 items-center mb-8">
           <MessageCircleQuestionMark className="text-[#24389C]" size={20} />
@@ -231,11 +234,12 @@ const SupportPage = () => {
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#510CBA1A] text-[#510CBA] p-4 rounded-full">
               <Mail size={20} />
-              
             </div>
             <div>
               <p className="text-[#757684] uppercase text-xs">Emila Inquiry</p>
-              <span className="text-base font-semibold">support@worldlink.com</span>
+              <span className="text-base font-semibold">
+                support@worldlink.com
+              </span>
             </div>
           </div>
         </div>
@@ -244,16 +248,15 @@ const SupportPage = () => {
           <div className="flex flex-row gap-4 items-center">
             <div className="bg-[#EA580C1A] text-[#EA580C] p-4 rounded-full">
               <MapPin size={20} />
-              
             </div>
             <div>
               <p className="text-[#757684] uppercase text-xs">Branch Locator</p>
-              <span className="text-base font-semibold">Find Nearest Office</span>
+              <span className="text-base font-semibold">
+                Find Nearest Office
+              </span>
             </div>
           </div>
         </div>
-
-
       </div>
     </div>
   );

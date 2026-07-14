@@ -8,7 +8,12 @@ const Sidebar = () => {
         <div className="bg-[#4251B6] fixed top-0 left-0 z-40 w-64 h-full flex flex-col p-6 text-white font-bold text-[16px]">
           {/* logo */}
           <div className="py-8">
-            <img src={Logo} alt="worldlink logo" />
+            <NavLink to='/'>
+
+              <img src={Logo} alt="worldlink logo" />
+
+            </NavLink>
+            
           </div>
 
           {/* dashboard */}
