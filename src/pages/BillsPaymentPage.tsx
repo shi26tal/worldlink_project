@@ -95,7 +95,7 @@ const BillsPaymentPage = () => {
         {/* 2 */}
         <div className="grid grid-cols-12 gap-6">
           {/* saved payment */}
-          <div className="col-span-9 bg-white rounded-xl shadow-sm p-6">
+          <div className="col-span-8 bg-white rounded-xl shadow-sm p-6">
             <div className="flex flex-row justify-between mb-6">
               <h4 className="font-semibold text-lg">Saved Payment Methods</h4>
               <button className="flex items-center gap-2 cursor-pointer text-[#24389C] ">
@@ -135,7 +135,7 @@ const BillsPaymentPage = () => {
             </div>
           </div>
           {/* refer and earn */}
-          <div className="col-span-3">
+          <div className="col-span-4">
             <ReferBanner />
           </div>
         </div>

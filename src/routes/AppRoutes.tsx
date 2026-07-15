@@ -7,6 +7,7 @@ import BillsPaymentPage from "../pages/BillsPaymentPage";
 import SupportPage from "../pages/SupportPage";
 import ReferPage from "../pages/ReferPage";
 import Benefits from "../pages/Benefits";
+import OfferPage from "../pages/OfferPage";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="bills-and-payments" element={<BillsPaymentPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="benefits" element={<Benefits />}></Route>
+        <Route path="offers" element={<OfferPage />}></Route>
       </Route>
     </Routes>
   );

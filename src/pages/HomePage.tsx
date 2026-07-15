@@ -226,6 +226,8 @@ const HomePage = () => {
                 tickLine={false}
               />
 
+            
+
               <Bar
                 dataKey="upload"
                 fill="#4251B6"
