@@ -44,7 +44,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div>
+        <div>  
           <div className=" flex flex-col w-full items-center gap-4">
             <div className="p-8 bg-white rounded-lg w-full flex flex-row justify-between items-center">
               <div className="flex flex-col gap-1">

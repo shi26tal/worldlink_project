@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ReferBanner from "../components/ReferBanner";
 import {
   Filter,
@@ -7,14 +8,12 @@ import {
   ChevronRight,
   ChevronLeft,
   CalendarSync,
-  
   PlusCircle,
   CreditCard,
   ArrowRight,
 } from "lucide-react";
 
 const BillsPaymentPage = () => {
-    
   const amountHistory = [
     ["Sep 28, 2023", "#WL-2023-0928", "NPR 4,850.00", "Paid"],
     ["Aug 28, 2023", "#WL-2023-0828", "NPR 4,850.00", "Paid"],
@@ -22,6 +21,8 @@ const BillsPaymentPage = () => {
     ["Jun 28, 2023", "#WL-2023-0628", "NPR 4,850.00", "Failed"],
     ["May 28, 2023", "#WL-2023-0528", "NPR 4,850.00", "Paid"],
   ];
+
+  const [enabled, setEnabled] = useState(false);
 
   return (
     <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
@@ -53,12 +54,9 @@ const BillsPaymentPage = () => {
               <div className="flex flex-row gap-2 text-[#24389C] items-center justify-center">
                 <Download size={12} />
                 <button className="text-[#24389C] cursor-pointer text-xs text-center ">
-                
-                Download Invoice
-              </button>
-
+                  Download Invoice
+                </button>
               </div>
-              
             </div>
           </div>
 
@@ -69,8 +67,43 @@ const BillsPaymentPage = () => {
                 <CalendarSync className="text-[#465AA3]" size={22} />
               </div>
               {/* Toggle  left to do*/}
-              <button className="w-12 h-7 rounded-full bg-[#3046C9]">
-              </button>
+              {/* <button className="w-12 h-7 rounded-full bg-[#3046C9]">
+              </button> */}
+
+              <div className="relative inline-block w-12 h-6">
+                <input
+                  id="toggle"
+                  type="checkbox"
+                  checked={enabled}
+                  onChange={(e) => setEnabled(e.target.checked)}
+                  className="sr-only"
+                />
+
+                <label
+                  htmlFor="toggle"
+                  className={`absolute inset-0 cursor-pointer rounded-full transition-colors duration-200 ${
+                    enabled ? "bg-[#24389C1A]" : "bg-[#E1E2E5]"
+                  }`}
+                >
+                  <span
+                    className={`
+        absolute
+        left-0.75
+        bottom-0.75
+        h-4.5
+        w-4.5
+        rounded-full
+        transition-all
+        duration-300
+        ${
+          enabled
+            ? "translate-x-6 bg-[#24389C]"
+            : "translate-x-0 bg-white"
+        }
+      `}
+                  />
+                </label>
+              </div>
             </div>
             <div className="my-4">
               <h4 className="text-xl font-semibold">Auto-pay Status</h4>
@@ -81,13 +114,10 @@ const BillsPaymentPage = () => {
             </div>
 
             <div className="flex flex-row items-center gap-2 text-sm text-[#24389C]">
-              <button>
-                Manage Auto-pay Settings
-                
-              </button>
+              <button>Manage Auto-pay Settings</button>
               <span>
-                  <ArrowRight size={16}/>
-                </span>
+                <ArrowRight size={16} />
+              </span>
             </div>
           </div>
         </div>
@@ -100,20 +130,27 @@ const BillsPaymentPage = () => {
               <h4 className="font-semibold text-lg">Saved Payment Methods</h4>
               <button className="flex items-center gap-2 cursor-pointer text-[#24389C] ">
                 <PlusCircle size={18} />
-                Add New</button>
+                Add New
+              </button>
             </div>
             <div className="flex flex-row justify-between">
               {/* visa */}
               <div className="flex flex-row gap-5 items-center justify-between border border-[#C5C5D44D] rounded-xl py-4.5 px-6">
                 <span>
-                  <CreditCard size={45}/>
+                  <CreditCard size={45} />
                 </span>
                 <div>
-                  <p className="text-xs font-semibold tracking-wider">Visa Signature</p>
-                  <p className="text-[#757684] text-sm tracking-wider">•••• •••• •••• 4421</p>
+                  <p className="text-xs font-semibold tracking-wider">
+                    Visa Signature
+                  </p>
+                  <p className="text-[#757684] text-sm tracking-wider">
+                    •••• •••• •••• 4421
+                  </p>
                 </div>
                 <div>
-                  <p className="uppercase px-2 py-1 text-[10px] text-[#24389C] bg-[#24389C1A] ">Primary</p>
+                  <p className="uppercase px-2 py-1 text-[10px] text-[#24389C] bg-[#24389C1A] ">
+                    Primary
+                  </p>
 
                   <p className="text-xs text-[#757684]">Exp: 09/26</p>
                 </div>
@@ -122,11 +159,15 @@ const BillsPaymentPage = () => {
               {/* mastecard */}
               <div className="flex flex-row items-center gap-5 justify-between border border-[#C5C5D44D] rounded-xl py-4.5 px-6">
                 <span>
-                  <CreditCard size={45}/>
+                  <CreditCard size={45} />
                 </span>
                 <div>
-                  <p className="text-xs font-semibold tracking-wider">Mastercard Gold</p>
-                  <p className="text-[#757684] text-sm tracking-wider">•••• •••• •••• 8802</p>
+                  <p className="text-xs font-semibold tracking-wider">
+                    Mastercard Gold
+                  </p>
+                  <p className="text-[#757684] text-sm tracking-wider">
+                    •••• •••• •••• 8802
+                  </p>
                 </div>
                 <div>
                   <p className="text-xs text-[#757684]">Exp: 12/25</p>

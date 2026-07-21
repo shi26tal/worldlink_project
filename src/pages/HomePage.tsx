@@ -8,7 +8,9 @@ import {
   ArrowUpFromLine,
   BrainCog,
   NotepadText,
+  Power,
   Rocket,
+  ShieldCheck,
   Square,
 } from "lucide-react";
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
@@ -200,14 +202,12 @@ const HomePage = () => {
 
             <div className="mb-5 flex flex-row justify-center gap-6">
               <div className="flex flex-row gap-1">
-                <Square fill="#4251B6" stroke-width='0' />
+                <Square fill="#4251B6" stroke-width="0" />
                 <span>Upload</span>
-
               </div>
               <div className="flex flex-row gap-1">
-                <Square fill="#a0a8da" stroke-width='0' />
+                <Square fill="#a0a8da" stroke-width="0" />
                 <span>Download</span>
-
               </div>
             </div>
 
@@ -225,8 +225,6 @@ const HomePage = () => {
                 axisLine={false}
                 tickLine={false}
               />
-
-            
 
               <Bar
                 dataKey="upload"
@@ -290,6 +288,40 @@ const HomePage = () => {
               <button className="mt-12 text-[#003D7C] text-[16px] items-center flex flex-row gap-2 cursor-pointer">
                 <span>Run Full Scan</span>
                 <ArrowRight size={16} />
+              </button>
+            </div>
+          </div>
+
+          {/* connected devices */}
+
+          <div className="col-span-9 bg-white rounded-xl shadow-md p-8 flex flex-row justify-between items-center">
+            <div className="flex items-center pr-18 ">
+              <p className="uppercase text-[#757684] text-base">
+                Connected Devices
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-1 px-18 border-x-2 border-[#C5C5D44D]">
+              <p className="uppercase text-[#757684] text-base">
+                Security Status
+              </p>
+              <p className="flex flex-row text-[#10B981] text-base font-semibold">
+                <ShieldCheck />
+                <span>Firewall Active</span>
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center gap-1 pl-18">
+              <p className="uppercase text-[#757684] text-base">IP Address</p>
+              <span>192.168.1.104</span>
+            </div>
+          </div>
+
+          <div className="col-span-3">
+            <div className="bg-[#3F51B5] flex flex-col justify-center items-center p-6 rounded-xl">
+              <Power size={65} className="text-white mb-3" />
+              <button className="text-[#24389C] bg-white rounded-lg px-6 py-2">
+                Restart Router
               </button>
             </div>
           </div>
