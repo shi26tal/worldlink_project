@@ -16,7 +16,7 @@ import {
 
 const SupportPage = () => {
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className="bg-[#F8F9FC] p-4 md:p-6">
       {/* head customer support */}
       <div className="flex flex-row justify-between items-center mb-8">
         <div>

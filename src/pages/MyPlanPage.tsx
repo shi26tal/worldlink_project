@@ -12,7 +12,7 @@ import GaugeComponent from "react-gauge-component";
 
 const MyPlanPage = () => {
   return (
-    <div className=" bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className=" bg-[#F8F9FC] p-4 md:p-6">
       <div className="flex flex-row justify-between items-center mb-8">
         <div>
           <h1 className="text-2xl font-semibold">My Plan</h1>

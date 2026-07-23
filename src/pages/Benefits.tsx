@@ -1,10 +1,29 @@
 import { CircleFadingPlus, MapPin, Phone, Search } from "lucide-react";
+import GoogleMapReact from "google-map-react";
+
+type AnyReactComponentProps = {
+  lat: number;
+  lng: number;
+  text: string;
+};
+
+const AnyReactComponent = ({ text }: AnyReactComponentProps) => (
+  <div>{text}</div>
+);
 
 const Benefits = () => {
+  const defaultProps = {
+    center: {
+      lat: 10.99835602,
+      lng: 77.01502627,
+    },
+    zoom: 11,
+  };
+
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className="bg-[#F8F9FC] p-4 md:p-6">
       {/* top section */}
-      <div className=" p-8 bg-[#E8EAF6] rounded-sm flex flex-row justify-between items-center mb-8">
+      <div className=" p-8 bg-[#E8EAF6] rounded-sm flex flex-row gap-16 justify-between items-center mb-8">
         <div className="w-100 flex flex-col gap-4 py-8">
           <h3 className="text-4xl font-bold">myWorldLink Benefits</h3>
           <p className="text-[#4B5563] text-lg">
@@ -21,12 +40,23 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div>map</div>
+        <div style={{ height: "35vh", width: "50%" }}>
+          <GoogleMapReact
+            bootstrapURLKeys={{ key: "" }}
+            defaultCenter={defaultProps.center}
+            defaultZoom={defaultProps.zoom}
+          >
+            <AnyReactComponent
+              lat={27.541967}
+              lng={85.334297}
+              text="My Marker"
+            />
+          </GoogleMapReact>
+        </div>
       </div>
 
       {/* second section */}
       <div className="p-8">
-
         {/* head */}
         <div className="flex flex-row items-center justify-between mb-8">
           <h4 className="text-xl font-semibold">Available Offers</h4>
@@ -44,7 +74,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div>  
+        <div>
           <div className=" flex flex-col w-full items-center gap-4">
             <div className="p-8 bg-white rounded-lg w-full flex flex-row justify-between items-center">
               <div className="flex flex-col gap-1">
@@ -89,7 +119,7 @@ const Benefits = () => {
               </div>
             </div>
 
-             <div className="p-8 bg-white rounded-lg w-full flex flex-row justify-between items-center">
+            <div className="p-8 bg-white rounded-lg w-full flex flex-row justify-between items-center">
               <div className="flex flex-col gap-1">
                 <h4>Makoo Bakery</h4>
                 <span className="text-[#16A34A]">
@@ -110,9 +140,6 @@ const Benefits = () => {
                 <CircleFadingPlus />
               </div>
             </div>
-
-
-
           </div>
         </div>
       </div>

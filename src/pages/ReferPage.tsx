@@ -12,7 +12,7 @@ const ReferPage = () => {
   }  
 
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className="bg-[#F8F9FC] p-4 md:p-6">
 
       <div className="mb-4">
         <div className="bg-white text-[#24389C] w-fit p-3 rounded-full items-center flex hover:bg-[#e9ebf5]">

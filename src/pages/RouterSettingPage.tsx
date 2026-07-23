@@ -9,10 +9,14 @@ import {
   Wifi,
   WifiIcon,
 } from "lucide-react";
+import { useState } from "react";
 
 const RouterSettingPage = () => {
+
+  const[enabled,setEnabled] = useState(false)
+
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className="bg-[#F8F9FC] p-4 md:p-6">
       <div className="mb-2">
         <h1 className="text-[#24389C] text-4xl font-bold tracking-wide mb-2">
           Router Settings
@@ -34,7 +38,40 @@ const RouterSettingPage = () => {
               <p className="text-base font-semibold">Band Steering</p>
             </div>
 
-            <div>toggle</div>
+            <div className="relative inline-block w-12 h-6">
+                <input
+                  id="toggle"
+                  type="checkbox"
+                  checked={enabled}
+                  onChange={(e) => setEnabled(e.target.checked)}
+                  className="sr-only"
+                />
+
+                <label
+                  htmlFor="toggle"
+                  className={`absolute inset-0 cursor-pointer rounded-full transition-colors duration-200 ${
+                    enabled ? "bg-[#24389C1A]" : "bg-[#E1E2E5]"
+                  }`}
+                >
+                  <span
+                    className={`
+        absolute
+        left-0.75
+        bottom-0.75
+        h-4.5
+        w-4.5
+        rounded-full
+        transition-all
+        duration-300
+        ${
+          enabled
+            ? "translate-x-6 bg-[#24389C]"
+            : "translate-x-0 bg-white"
+        }
+      `}
+                  />
+                </label>
+              </div>
           </div>
 
           {/* wifi configuration */}

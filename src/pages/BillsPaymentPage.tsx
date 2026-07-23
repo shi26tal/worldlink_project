@@ -25,7 +25,7 @@ const BillsPaymentPage = () => {
   const [enabled, setEnabled] = useState(false);
 
   return (
-    <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
+    <div className="bg-[#F8F9FC] p-4 md:p-6">
       <div className="flex flex-col gap-6">
         {/* 1 */}
         <div className="grid grid-cols-12 gap-6">
@@ -104,6 +104,8 @@ const BillsPaymentPage = () => {
                   />
                 </label>
               </div>
+
+              
             </div>
             <div className="my-4">
               <h4 className="text-xl font-semibold">Auto-pay Status</h4>

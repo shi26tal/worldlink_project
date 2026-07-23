@@ -13,7 +13,7 @@ import {
   ShieldCheck,
   Square,
 } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis } from "recharts";
+import { Bar, BarChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer } from "recharts";
 import { useState } from "react";
 
 const HomePage = () => {
@@ -39,10 +39,10 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[#f8f9fc] ml-64 mt-19 p-6 min-h-screen">
-        <div className="grid grid-cols-12 gap-6">
+      <div className="bg-[#F8F9FC] p-4 md:p-6">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           {/* Live Network Status Card */}
-          <div className="col-span-12 justify-between flex bg-white p-8 rounded-lg shadow-md text-[#424751]">
+          <div className="col-span-12 bg-white rounded-xl shadow-md p-6 lg:p-8 text-[#424751] flex flex-col lg:flex-row justify-between gap-8">
             <div>
               <div className="flex items-center gap-1 pb-2">
                 <img src={Live} alt="Live status" className="w-4 h-4" />
@@ -58,12 +58,12 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="flex gap-4">
-              <div className="p-5 border border-[#C2C6D31A] text-center bg-[#FFFFFF80]">
+            <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex-1 p-5 border border-[#C2C6D31A] rounded-xl text-center bg-[#FFFFFF80]">
                 <p className="text-[#424751]">Latency</p>
                 <span className="text-[#003D7C]">12ms</span>
               </div>
-              <div className="p-5 border border-[#C2C6D31A] text-center bg-[#FFFFFF80]">
+              <div className="flex-1 p-5 border border-[#C2C6D31A] rounded-xl text-center bg-[#FFFFFF80]">
                 <p className="text-[#424751]">Uptime</p>
                 <span className="text-[#003D7C]">24d 5h</span>
               </div>
@@ -71,7 +71,7 @@ const HomePage = () => {
           </div>
 
           {/* current download speed */}
-          <div className="col-span-4 bg-[#38BDF8B2] p-8 rounded-lg shadow-md">
+          <div className="col-span-12 md:col-span-6 xl:col-span-4 bg-[#38BDF8B2] p-6 lg:p-8 rounded-lg shadow-md">
             <h3 className="text-[#424751] text-center font-normal tracking-[0.8px] mt-10 mb-6">
               CURRENT DOWNLOAD SPEED
             </h3>
@@ -103,7 +103,7 @@ const HomePage = () => {
               />
             </div>
 
-            <div className="flex border-t border-[#C2C6D333] mt-6 px-6 pt-6 items-center justify-between">
+            <div className="flex justify-between items-center border-t border-[#C2C6D333] mt-6 pt-6 px-6">
               <div className="flex flex-col items-center">
                 <p>Upload</p>
                 <span>112 Mbps</span>
@@ -116,8 +116,8 @@ const HomePage = () => {
           </div>
 
           {/* active subscriptions */}
-          <div className="col-span-5 bg-white p-8 rounded-lg shadow-md text-[#424751]">
-            <div className="flex flex-row justify-between items-start">
+          <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-white p-6 lg:p-8 rounded-lg shadow-md text-[#424751]">
+            <div className="flex flex-col sm:flex-row justify-between gap-4 items-center">
               <div>
                 <h3 className="uppercase text-[16px] tracking-wide">
                   Active Subscriptions
@@ -131,7 +131,7 @@ const HomePage = () => {
                 300 Mbps
               </span>
             </div>
-            <div className="grid-cols-2 grid gap-y-4 mt-8 font-normal text-[16px]">
+            <div className="grid grid-cols-2 gap-y-4 mt-8 font-normal text-[16px]">
               <p>Billing Cycle</p>
 
               <p className="text-right">Monthly</p>
@@ -166,8 +166,8 @@ const HomePage = () => {
           </div>
 
           {/* speed test & refer*/}
-          <div className="col-span-3 flex flex-col gap-6">
-            <div className="bg-white rounded-xl shadow-md p-8">
+          <div className="col-span-12 md:col-span-6 xl:col-span-3 flex flex-col gap-6">
+            <div className="bg-white rounded-xl shadow-md p-6 lg:p-8">
               <p className="text-[#1E40AF] font-bold mb-6">Speed Test</p>
               <button className="bg-[#4251B6] w-full cursor-pointer text-white rounded-xl flex flex-row items-center justify-center gap-2 px-6 py-3">
                 <Rocket size={20} fill="white" />
@@ -180,12 +180,12 @@ const HomePage = () => {
           </div>
 
           {/* WeeklyUsage */}
-          <div className="col-span-5 bg-white rounded-xl shadow-md p-8">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-5 bg-white rounded-xl shadow-md p-6 lg:p-8">
             <p className="text-[#424751] text-base uppercase tracking-widest mb-5">
               Weekly Usage (GB)
             </p>
 
-            <div className="mb-5 flex flex-row gap-2 text-[#424751] text-xs">
+            <div className="mb-5 flex gap-2 text-[#424751] text-xs">
               <button
                 onClick={() => setActiveTab("7")}
                 className={` cursor-pointer text-xs px-3 py-1  ${activeTab === "7" ? "bg-[#DCE9FF] text-[#0D1C2E] rounded-lg" : "bg-white  text-[#424751 ]"}`}
@@ -200,7 +200,7 @@ const HomePage = () => {
               </button>
             </div>
 
-            <div className="mb-5 flex flex-row justify-center gap-6">
+            <div className="mb-5 flex justify-center gap-6 flex-wrap">
               <div className="flex flex-row gap-1">
                 <Square fill="#4251B6" stroke-width="0" />
                 <span>Upload</span>
@@ -211,65 +211,75 @@ const HomePage = () => {
               </div>
             </div>
 
-            <BarChart width={400} height={300} data={currentData}>
-              <CartesianGrid stroke="#ccc" vertical={false} />
-              <XAxis
-                dataKey="day"
-                style={{ fill: "#6B7280", fontSize: 14 }}
-                axisLine={false}
-                tickLine={false}
-              />
+            <div className="h-75 w-full">
+  <ResponsiveContainer width="100%" height="100%">
+    <BarChart data={currentData}>
+      <CartesianGrid stroke="#ccc" vertical={false} />
 
-              <YAxis
-                style={{ fill: "#6B7280", fontSize: 14 }}
-                axisLine={false}
-                tickLine={false}
-              />
+      <XAxis
+        dataKey="day"
+        axisLine={false}
+        tickLine={false}
+        style={{
+          fill: "#6B7280",
+          fontSize: 14,
+        }}
+      />
 
-              <Bar
-                dataKey="upload"
-                fill="#4251B6"
-                radius={[20, 20, 20, 20]}
-                barSize={20}
-              />
-              <Bar
-                dataKey="download"
-                fill="#a0a8da"
-                radius={[20, 20, 20, 20]}
-                barSize={20}
-              />
-            </BarChart>
+      <YAxis
+        axisLine={false}
+        tickLine={false}
+        style={{
+          fill: "#6B7280",
+          fontSize: 14,
+        }}
+      />
+
+      <Bar
+        dataKey="upload"
+        fill="#4251B6"
+        radius={[20, 20, 20, 20]}
+      />
+
+      <Bar
+        dataKey="download"
+        fill="#A0A8DA"
+        radius={[20, 20, 20, 20]}
+      />
+    </BarChart>
+  </ResponsiveContainer>
+</div>
           </div>
 
           {/* Latest Ticket */}
-          <div className="col-span-4 bg-white rounded-xl shadow-md p-8">
-            <div className="flex justify-between">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-4 bg-white rounded-xl shadow-md p-6 lg:p-8">
+            <div className="flex flex-col sm:flex-row sm:justify-between gap-4">
               <div className="flex flex-row gap-1">
                 <h3 className="font-bold text-[#1E40AF]">Latest Ticket</h3>
                 <p className="text-[#1E40AF] font-bold">(0)</p>
               </div>
-              <button className="bg-[#E67E22] rounded-lg text-white px-4 py-2">
+              <button className="bg-[#E67E22] rounded-lg text-white px-4 py-2 w-full sm:w-auto">
                 Report Problem
               </button>
             </div>
-            <div className="flex flex-col items-center mt-14">
+            <div className="flex flex-col items-center mt-10 lg:mt-14">
               <div className="px-5 py-6  bg-[#F3F4F6] rounded-full text-[#9CA3AF]">
                 <NotepadText size={42} />
               </div>
 
               <h3 className="mt-6 font-semibold">No Ticket Yet</h3>
-              <p className="text-center text-[#6B7280] mt-3 mx-8">
+              <p className="text-center text-[#6B7280] mt-3 max-w-sm">
                 Facing issues with the internet? Report a problem if you need
                 support.
               </p>
-              <button className="uppercase mt-8 rounded-full bg-[#0C3D81] text-white py-3 px-8">
+              <button className="uppercase mt-8 rounded-full bg-[#0C3D81] text-white py-3 px-8 w-full sm:w-auto">
                 Chat with live agent
               </button>
             </div>
           </div>
 
           {/* AI Diagnostic */}
-          <div className="col-span-3 bg-white rounded-xl shadow-md p-8">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-md p-6 lg:p-8">
             <div className="flex flex-col items-center mt-4">
               <div className="p-6 bg-[#F3F4F6] text-[#003D7C] rounded-full">
                 <BrainCog size={40} />
@@ -294,14 +304,14 @@ const HomePage = () => {
 
           {/* connected devices */}
 
-          <div className="col-span-9 bg-white rounded-xl shadow-md p-8 flex flex-row justify-between items-center">
-            <div className="flex items-center pr-18 ">
+          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 bg-white rounded-xl shadow-md p-8 flex flex-row justify-between items-center">
+            <div className="flex items-center px-8 lg:px-8 xl:px-18 ">
               <p className="uppercase text-[#757684] text-base">
                 Connected Devices
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-1 px-18 border-x-2 border-[#C5C5D44D]">
+            <div className="flex flex-col items-center gap-1 px-8 lg:px-8 xl:px-18 border-x-2 border-[#C5C5D44D]">
               <p className="uppercase text-[#757684] text-base">
                 Security Status
               </p>
@@ -311,19 +321,29 @@ const HomePage = () => {
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-1 pl-18">
+            <div className="flex flex-col items-center gap-1 px-8 lg:px-8 xl:px-18">
               <p className="uppercase text-[#757684] text-base">IP Address</p>
               <span>192.168.1.104</span>
             </div>
           </div>
 
-          <div className="col-span-3">
+          {/* restart router */}
+          <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3">
             <div className="bg-[#3F51B5] flex flex-col justify-center items-center p-6 rounded-xl">
               <Power size={65} className="text-white mb-3" />
               <button className="text-[#24389C] bg-white rounded-lg px-6 py-2">
                 Restart Router
               </button>
             </div>
+          </div>
+
+          {/* exclusive offers */}
+          <div>
+            <h3>Exclusive Offers</h3>
+          </div>
+
+          <div className="col-span-5">
+            
           </div>
         </div>
       </div>
