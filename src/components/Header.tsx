@@ -1,22 +1,18 @@
+import { useNavigate } from "react-router";
 import Profile from "../assets/icon/profile-icon.png";
-import {
-  Bell,
-  LogOut,
-  Menu,
-  Search,
-} from "lucide-react";
+import { Bell, LogOut, Menu, Search } from "lucide-react";
 
 type HeaderProps = {
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const Header = ({
-  sidebarOpen,
-  setSidebarOpen,
-}: HeaderProps) => {
+const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
+
+  const navigate = useNavigate()
+
   return (
-    <header className="fixed top-0 left-0 right-0 lg:left-64 z-50 bg-[#F8F9FC] border-b border-gray-200 px-4 md:px-6 py-4">
+    <header className="fixed top-0 left-0 right-0 lg:left-64 z-50 bg-[#F8F9FC] px-4 md:px-6 py-4 shadow-xs">
       <div className="flex items-center justify-between gap-4">
         {/* Left */}
         <div className="flex items-center gap-3">
@@ -37,10 +33,7 @@ const Header = ({
               placeholder="Search devices or settings..."
               className="flex-1 bg-transparent outline-none text-sm placeholder:text-sm"
             />
-            <Search
-              size={18}
-              className="text-[#757684]"
-            />
+            <Search size={18} className="text-[#757684]" />
           </div>
 
           {/* Search Icon */}
@@ -50,29 +43,28 @@ const Header = ({
 
           {/* Notification */}
           <button>
-            <Bell
-              size={22}
-              fill="#454652"
-              className="text-[#454652]"
-            />
+            <Bell size={22} fill="#454652" className="text-[#454652]" />
           </button>
 
           {/* User */}
           <div className="flex items-center gap-2 md:gap-3">
-            <p className="hidden lg:block text-xs font-semibold whitespace-nowrap">
-              Choi Beomgyu
-            </p>
+            <div className="flex items-center gap-2 cursor-pointer" onClick={()=> navigate('profile')} >
+              <p className="hidden lg:block text-xs font-semibold whitespace-nowrap">
+                Choi Beomgyu
+              </p>
 
-            <img
-              src={Profile}
-              alt="Profile"
-              className="w-9 h-9 rounded-full object-cover"
-            />
+              <img
+                src={Profile}
+                alt="Profile"
+                className="w-9 h-9 rounded-full object-cover"
+              />
+            </div>
 
-            <button className="hidden sm:block">
+            <button className="">
               <LogOut
-                size={20}
-                className="text-[#24389C]"
+                size={24}
+                className="text-[#24389C] cursor-pointer"
+                strokeWidth={3}
               />
             </button>
           </div>

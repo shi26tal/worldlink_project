@@ -14,7 +14,12 @@ import {
   Zap,
 } from "lucide-react";
 
+import { useNavigate } from "react-router";
+
 const SupportPage = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
       {/* head customer support */}
@@ -148,10 +153,11 @@ const SupportPage = () => {
             </div>
           </div>
 
-          <button className="flex flex-row gap-2 items-center text-[#24389C]">
+          <button className="flex flex-row gap-2 items-center text-[#24389C]" onClick={()=> navigate('/support/location-shift')}>
             <span className="text-base">Request Now</span>
             <ArrowRight size={15} />
           </button>
+      
         </div>
 
           {/* new connection */}

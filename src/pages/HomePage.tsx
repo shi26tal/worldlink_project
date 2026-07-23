@@ -1,5 +1,4 @@
 import GaugeComponent from "react-gauge-component";
-import Live from "../assets/live.png";
 
 import ReferBanner from "../components/ReferBanner";
 
@@ -7,14 +6,25 @@ import {
   ArrowRight,
   ArrowUpFromLine,
   BrainCog,
+  Dot,
   NotepadText,
   Power,
   Rocket,
   ShieldCheck,
   Square,
 } from "lucide-react";
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis,ResponsiveContainer } from "recharts";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+} from "recharts";
 import { useState } from "react";
+import offer1 from "../assets/o1.jpg";
+import offer2 from "../assets/o2.jpg";
+import offer3 from "../assets/o3.jpg";
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState<"7" | "30">("7");
@@ -44,8 +54,9 @@ const HomePage = () => {
           {/* Live Network Status Card */}
           <div className="col-span-12 bg-white rounded-xl shadow-md p-6 lg:p-8 text-[#424751] flex flex-col lg:flex-row justify-between gap-8">
             <div>
-              <div className="flex items-center gap-1 pb-2">
-                <img src={Live} alt="Live status" className="w-4 h-4" />
+              <div className="flex items-center pb-2">
+                <Dot color="#22C55E" strokeWidth={6} />
+
                 <h3 className=" text-[16px] font-normal">
                   Live Network Status
                 </h3>
@@ -212,43 +223,43 @@ const HomePage = () => {
             </div>
 
             <div className="h-75 w-full">
-  <ResponsiveContainer width="100%" height="100%">
-    <BarChart data={currentData}>
-      <CartesianGrid stroke="#ccc" vertical={false} />
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={currentData}>
+                  <CartesianGrid stroke="#ccc" vertical={false} />
 
-      <XAxis
-        dataKey="day"
-        axisLine={false}
-        tickLine={false}
-        style={{
-          fill: "#6B7280",
-          fontSize: 14,
-        }}
-      />
+                  <XAxis
+                    dataKey="day"
+                    axisLine={false}
+                    tickLine={false}
+                    style={{
+                      fill: "#6B7280",
+                      fontSize: 14,
+                    }}
+                  />
 
-      <YAxis
-        axisLine={false}
-        tickLine={false}
-        style={{
-          fill: "#6B7280",
-          fontSize: 14,
-        }}
-      />
+                  <YAxis
+                    axisLine={false}
+                    tickLine={false}
+                    style={{
+                      fill: "#6B7280",
+                      fontSize: 14,
+                    }}
+                  />
 
-      <Bar
-        dataKey="upload"
-        fill="#4251B6"
-        radius={[20, 20, 20, 20]}
-      />
+                  <Bar
+                    dataKey="upload"
+                    fill="#4251B6"
+                    radius={[20, 20, 20, 20]}
+                  />
 
-      <Bar
-        dataKey="download"
-        fill="#A0A8DA"
-        radius={[20, 20, 20, 20]}
-      />
-    </BarChart>
-  </ResponsiveContainer>
-</div>
+                  <Bar
+                    dataKey="download"
+                    fill="#A0A8DA"
+                    radius={[20, 20, 20, 20]}
+                  />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
 
           {/* Latest Ticket */}
@@ -338,12 +349,29 @@ const HomePage = () => {
           </div>
 
           {/* exclusive offers */}
-          <div>
-            <h3>Exclusive Offers</h3>
-          </div>
+          <div className="col-span-12 ">
+            <h3 className="text-xl font-normal mb-4">Exclusive Offers</h3>
+            <div className="flex gap-4 overflow-x-auto snap-mandatory snap-x scroll-smooth pb-6">
+              <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
+                <img src={offer1} alt="image-one" className="rounded-2xl w-full object-cover h-64"/>
+              </div>
 
-          <div className="col-span-5">
-            
+              <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
+                <img src={offer2} alt="image-two" className="rounded-2xl w-full object-cover h-64"/>
+              </div>
+
+              <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
+                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+              </div>
+
+              <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
+                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+              </div>
+
+              <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
+                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+              </div>
+            </div>
           </div>
         </div>
       </div>
