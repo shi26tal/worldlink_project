@@ -1,5 +1,6 @@
 import { ArrowLeft, MapPin } from "lucide-react";
 import { useNavigate } from "react-router";
+import Map from "../components/Map";
 
 const LocationShiftPage = () => {
   const navigate = useNavigate();
@@ -18,6 +19,8 @@ const LocationShiftPage = () => {
           </button>
         </div>
       </div>
+
+      <Map />
 
       {/* map */}
 

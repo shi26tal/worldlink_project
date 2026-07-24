@@ -1,30 +1,12 @@
 import { CircleFadingPlus, MapPin, Phone, Search } from "lucide-react";
-import GoogleMapReact from "google-map-react";
-
-type AnyReactComponentProps = {
-  lat: number;
-  lng: number;
-  text: string;
-};
-
-const AnyReactComponent = ({ text }: AnyReactComponentProps) => (
-  <div>{text}</div>
-);
+import Map from "../components/Map";
 
 const Benefits = () => {
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627,
-    },
-    zoom: 11,
-  };
-
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
       {/* top section */}
-      <div className=" p-8 bg-[#E8EAF6] rounded-sm flex flex-row gap-16 justify-between items-center mb-8">
-        <div className="w-100 flex flex-col gap-4 py-8">
+      <div className=" p-8 bg-[#E8EAF6] rounded-sm  mb-8 grid grid-cols-12 gap-6">
+        <div className="col-span-6 w-100 flex flex-col gap-4 py-8">
           <h3 className="text-4xl font-bold">myWorldLink Benefits</h3>
           <p className="text-[#4B5563] text-lg">
             Exciting discount offers for our loyal subscribers.
@@ -40,18 +22,8 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div style={{ height: "35vh", width: "50%" }}>
-          <GoogleMapReact
-            bootstrapURLKeys={{ key: "" }}
-            defaultCenter={defaultProps.center}
-            defaultZoom={defaultProps.zoom}
-          >
-            <AnyReactComponent
-              lat={27.541967}
-              lng={85.334297}
-              text="My Marker"
-            />
-          </GoogleMapReact>
+        <div className="col-span-6 w-full border border-[#E5E7EB] rounded-2xl shadow-md">
+          <Map />
         </div>
       </div>
 
