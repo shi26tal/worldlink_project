@@ -4,8 +4,8 @@ const Map = () => {
   const position: [number, number] = [27.6729, 85.3256];
 
   return (
-    <div className="h-64 w-full rounded-xl overflow-hidden">
-      <MapContainer center={position} zoom={13} className="h-full w-full">
+    <div className="h-full w-full rounded-xl overflow-hidden">
+      <MapContainer center={position} zoom={13} className="h-full w-full z-0">
         <TileLayer
           attribution='&copy; OpenStreetMap contributors'
         url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"

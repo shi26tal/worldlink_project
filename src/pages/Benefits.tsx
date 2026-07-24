@@ -22,7 +22,7 @@ const Benefits = () => {
           </div>
         </div>
 
-        <div className="col-span-6 w-full border border-[#E5E7EB] rounded-2xl shadow-md">
+        <div className="col-span-6 w-full h-64 border border-[#E5E7EB] rounded-2xl shadow-md">
           <Map />
         </div>
       </div>
