@@ -51,8 +51,8 @@ const LocationShiftPage = () => {
 
             {/* current address */}
             <div className="mb-8 flex items-center gap-4 rounded-xl border border-[#DEE0FF80] bg-[#DEE0FF4D] p-5">
-              <div className="rounded-lg bg-white p-3">
-                <MapPin className="text-[#24389C]"/>
+              <div className="rounded-lg bg-white p-2.5">
+                <MapPin color="white" fill="#24389C" size={28}/>
               </div>
 
               <div>

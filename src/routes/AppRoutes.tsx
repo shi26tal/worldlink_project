@@ -11,6 +11,7 @@ import OfferPage from "../pages/OfferPage";
 import LocationShiftPage from "../pages/Support-Page/LocationShiftPage";
 import ProfilePage from "../pages/ProfilePage";
 import NewConnectionPage from "../pages/Support-Page/NewConnectionPage";
+import ReportProblemPage from "../pages/Support-Page/ReportProblemPage";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="support" element={<SupportPage />} />
         <Route path="support/location-shift" element={<LocationShiftPage />} />
         <Route path="support/new-connection" element={<NewConnectionPage />} />
+        <Route path="support/report-problem" element={<ReportProblemPage />} />
         <Route path="benefits" element={<Benefits />}></Route>
         <Route path="offers" element={<OfferPage />}></Route>
       </Route>

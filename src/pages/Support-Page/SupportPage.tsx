@@ -31,7 +31,7 @@ const SupportPage = () => {
           </p>
         </div>
         <div>
-          <button className="flex flex-row px-6 py-3 bg-[#EA580C] rounded-xl text-white gap-2 items-center">
+          <button className="flex flex-row px-6 py-3 bg-[#EA580C] rounded-xl text-white gap-2 items-center" onClick={()=> navigate('/support/report-problem')}>
             <TriangleAlert size={26} />
             <span>Report Problem</span>
           </button>
