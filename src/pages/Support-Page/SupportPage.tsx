@@ -178,7 +178,7 @@ const SupportPage = () => {
             </div>
           </div>
 
-          <button className="flex flex-row gap-2 items-center text-[#24389C]">
+          <button className="flex flex-row gap-2 items-center text-[#24389C]" onClick={()=> navigate('/support/new-connection')}>
             <span className="text-base">Request Now</span>
             <ArrowRight size={15} />
           </button>

@@ -1,6 +1,6 @@
 import { ArrowLeft, MapPin, Search } from "lucide-react";
 import { useNavigate } from "react-router";
-import Map from "../components/Map";
+import Map from "../../components/Map";
 
 const LocationShiftPage = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const LocationShiftPage = () => {
         </div>
 
         <div className="absolute top-6 left-6 right-6 flex items-center justify-between z-1000">
-          {/* Left */}
+          
           <div className="flex items-center gap-4">
             <button
               onClick={handleBack}
@@ -31,7 +31,7 @@ const LocationShiftPage = () => {
             </div> */}
           </div>
 
-          {/* Right */}
+         
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md">
             <Search className="text-[#24389C]" />
           </div>
@@ -49,7 +49,7 @@ const LocationShiftPage = () => {
               Select address from the map
             </h2>
 
-            {/* Current Address */}
+            {/* current address */}
             <div className="mb-8 flex items-center gap-4 rounded-xl border border-[#DEE0FF80] bg-[#DEE0FF4D] p-5">
               <div className="rounded-lg bg-white p-3">
                 <MapPin className="text-[#24389C]"/>
@@ -63,7 +63,7 @@ const LocationShiftPage = () => {
               </div>
             </div>
 
-            {/* Inputs */}
+            {/* inputs */}
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
               <div>
                 <label className="mb-2 block text-sm font-medium">

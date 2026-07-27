@@ -4,12 +4,13 @@ import HomePage from "../pages/HomePage";
 import MyPlanPage from "../pages/MyPlanPage";
 import RouterSettingPage from "../pages/RouterSettingPage";
 import BillsPaymentPage from "../pages/BillsPaymentPage";
-import SupportPage from "../pages/SupportPage";
+import SupportPage from "../pages/Support-Page/SupportPage";
 import ReferPage from "../pages/ReferPage";
 import Benefits from "../pages/Benefits";
 import OfferPage from "../pages/OfferPage";
-import LocationShiftPage from "../pages/LocationShiftPage";
+import LocationShiftPage from "../pages/Support-Page/LocationShiftPage";
 import ProfilePage from "../pages/ProfilePage";
+import NewConnectionPage from "../pages/Support-Page/NewConnectionPage";
 
 const AppRoutes = () => {
   return (
@@ -23,6 +24,7 @@ const AppRoutes = () => {
         <Route path="bills-and-payments" element={<BillsPaymentPage />} />
         <Route path="support" element={<SupportPage />} />
         <Route path="support/location-shift" element={<LocationShiftPage />} />
+        <Route path="support/new-connection" element={<NewConnectionPage />} />
         <Route path="benefits" element={<Benefits />}></Route>
         <Route path="offers" element={<OfferPage />}></Route>
       </Route>
