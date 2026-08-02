@@ -24,6 +24,11 @@ const ProfilePage = () => {
     navigate('/employee-verification')
   }
 
+
+  const handlePasswordChange = () => {
+    navigate('/change-password');
+  };
+
   return (
     <div className="bg-[#F8F9FC] min-h-screen p-4 md:p-6">
       {/* back arrow */}
@@ -230,7 +235,7 @@ const ProfilePage = () => {
               <p>Security</p>
               <LockKeyhole color="#757684" size={20} />
             </div>
-            <div className="flex justify-between mb-3 p-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg items-center">
+            <div className="flex justify-between mb-3 p-4 cursor-pointer bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg items-center" onClick={handlePasswordChange}>
               <div className="flex items-center gap-1.5">
                 <RectangleEllipsis color="#465AA3" />
                 <p className="text-sm">Change Password</p>
