@@ -25,8 +25,10 @@ import { useState } from "react";
 import offer1 from "../assets/o1.jpg";
 import offer2 from "../assets/o2.jpg";
 import offer3 from "../assets/o3.jpg";
+import { useNavigate } from "react-router";
 
 const HomePage = () => {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<"7" | "30">("7");
 
   const weeklyData = [
@@ -49,8 +51,8 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[#F8F9FC] p-4 md:p-6">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="bg-[#F8F9FC] p-4 m d:p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-6">
           {/* Live Network Status Card */}
           <div className="col-span-12 bg-white rounded-xl shadow-md p-6 lg:p-8 text-[#424751] flex flex-col lg:flex-row justify-between gap-8">
             <div>
@@ -269,7 +271,10 @@ const HomePage = () => {
                 <h3 className="font-bold text-[#1E40AF]">Latest Ticket</h3>
                 <p className="text-[#1E40AF] font-bold">(0)</p>
               </div>
-              <button className="bg-[#E67E22] rounded-lg text-white px-4 py-2 w-full sm:w-auto">
+              <button
+                className="bg-[#E67E22] rounded-lg text-white px-4 py-2 w-full sm:w-auto"
+                onClick={() => navigate("/support/report-problem")}
+              >
                 Report Problem
               </button>
             </div>
@@ -315,14 +320,14 @@ const HomePage = () => {
 
           {/* connected devices */}
 
-          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 bg-white rounded-xl shadow-md p-8 flex flex-row justify-between items-center">
+          <div className="col-span-12 md:col-span-8 lg:col-span-8 xl:col-span-9 bg-white rounded-xl shadow-md p-8 flex lg:flex-row flex-col justify-between items-center">
             <div className="flex items-center px-8 lg:px-8 xl:px-18 ">
               <p className="uppercase text-[#757684] text-base">
                 Connected Devices
               </p>
             </div>
 
-            <div className="flex flex-col items-center gap-1 px-8 lg:px-8 xl:px-18 border-x-2 border-[#C5C5D44D]">
+            <div className="flex flex-col items-center gap-1 px-8 lg:px-8 xl:px-18 ">
               <p className="uppercase text-[#757684] text-base">
                 Security Status
               </p>
@@ -338,11 +343,13 @@ const HomePage = () => {
             </div>
           </div>
 
+          
+
           {/* restart router */}
           <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3">
             <div className="bg-[#3F51B5] flex flex-col justify-center items-center p-6 rounded-xl">
               <Power size={65} className="text-white mb-3" />
-              <button className="text-[#24389C] bg-white rounded-lg px-6 py-2">
+              <button className="text-[#24389C] bg-white rounded-lg px-6 py-2 w-full sm:w-auto">
                 Restart Router
               </button>
             </div>
@@ -353,23 +360,43 @@ const HomePage = () => {
             <h3 className="text-xl font-normal mb-4">Exclusive Offers</h3>
             <div className="flex gap-4 overflow-x-auto snap-mandatory snap-x scroll-smooth pb-6">
               <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
-                <img src={offer1} alt="image-one" className="rounded-2xl w-full object-cover h-64"/>
+                <img
+                  src={offer1}
+                  alt="image-one"
+                  className="rounded-2xl w-full object-cover h-52 sm:h-60 lg:h-64"
+                />
               </div>
 
               <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
-                <img src={offer2} alt="image-two" className="rounded-2xl w-full object-cover h-64"/>
+                <img
+                  src={offer2}
+                  alt="image-two"
+                  className="rounded-2xl w-full object-cover h-52 sm:h-60 lg:h-64"
+                />
               </div>
 
               <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
-                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+                <img
+                  src={offer3}
+                  alt="image-thress"
+                  className="rounded-2xl w-full object-cover h-52 sm:h-60 lg:h-64"
+                />
               </div>
 
               <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
-                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+                <img
+                  src={offer3}
+                  alt="image-thress"
+                  className="rounded-2xl w-full object-cover h-52 sm:h-60 lg:h-64"
+                />
               </div>
 
               <div className="  snap-start shrink-0 w-full md:w-[70%] lg:w-[50%] xl:w-[33%]">
-                <img src={offer3} alt="image-thress" className="rounded-2xl w-full object-cover h-64"/>
+                <img
+                  src={offer3}
+                  alt="image-thress"
+                  className="rounded-2xl w-full object-cover h-52 sm:h-60 lg:h-64"
+                />
               </div>
             </div>
           </div>

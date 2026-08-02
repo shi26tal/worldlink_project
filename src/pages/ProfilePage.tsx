@@ -20,6 +20,10 @@ const ProfilePage = () => {
     navigate("/");
   };
 
+  const handleVerification = () =>{
+    navigate('/employee-verification')
+  }
+
   return (
     <div className="bg-[#F8F9FC] min-h-screen p-4 md:p-6">
       {/* back arrow */}
@@ -214,7 +218,7 @@ const ProfilePage = () => {
             </div>
 
             <div>
-              <button className="w-full p-2 bg-white text-[#24389C] text-base rounded-lg cursor-pointer hover:bg-amber-50">
+              <button className="w-full p-2 bg-white text-[#24389C] text-base rounded-lg cursor-pointer hover:bg-amber-50" onClick={handleVerification}>
                 Employee Verification
               </button>
             </div>
@@ -296,16 +300,16 @@ const ProfilePage = () => {
 
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
 
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Account Status</p>
-              <p className="text-base font-semibold">Jawalakhel, Lalitpur, NP</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">Current Plan</p>
+              <p className="text-base font-semibold">Smart Offer 250 Mbps</p>
 
 
             </div>
 
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
 
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Account Status</p>
-              <p className="text-base font-semibold">Jawalakhel, Lalitpur, NP</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">Next Renewal</p>
+              <p className="text-base font-semibold">Nov 12, 2024</p>
 
 
             </div>

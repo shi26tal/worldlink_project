@@ -12,6 +12,7 @@ import LocationShiftPage from "../pages/Support-Page/LocationShiftPage";
 import ProfilePage from "../pages/ProfilePage";
 import NewConnectionPage from "../pages/Support-Page/NewConnectionPage";
 import ReportProblemPage from "../pages/Support-Page/ReportProblemPage";
+import EmployeeVerificationPage from "../pages/EmployeeVerificationPage";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />}></Route>
         <Route path="profile" element={<ProfilePage />} />
+        <Route path="employee-verification" element={<EmployeeVerificationPage />}></Route>
         <Route path="refer" element={<ReferPage />}></Route>
         <Route path="my-plan" element={<MyPlanPage />} />
         <Route path="router-settings" element={<RouterSettingPage />} />
