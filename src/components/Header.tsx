@@ -42,7 +42,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
           </button>
 
           {/* Notification */}
-          <button>
+          <button onClick={() => navigate('notification')}>
             <Bell size={22} fill="#454652" className="text-[#454652]" />
           </button>
 
