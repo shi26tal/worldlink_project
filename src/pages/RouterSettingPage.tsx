@@ -12,8 +12,7 @@ import {
 import { useState } from "react";
 
 const RouterSettingPage = () => {
-
-  const[enabled,setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(false);
 
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
@@ -39,22 +38,22 @@ const RouterSettingPage = () => {
             </div>
 
             <div className="relative inline-block w-12 h-6">
-                <input
-                  id="toggle"
-                  type="checkbox"
-                  checked={enabled}
-                  onChange={(e) => setEnabled(e.target.checked)}
-                  className="sr-only"
-                />
+              <input
+                id="toggle"
+                type="checkbox"
+                checked={enabled}
+                onChange={(e) => setEnabled(e.target.checked)}
+                className="sr-only"
+              />
 
-                <label
-                  htmlFor="toggle"
-                  className={`absolute inset-0 cursor-pointer rounded-full transition-colors duration-200 ${
-                    enabled ? "bg-[#24389C1A]" : "bg-[#E1E2E5]"
-                  }`}
-                >
-                  <span
-                    className={`
+              <label
+                htmlFor="toggle"
+                className={`absolute inset-0 cursor-pointer rounded-full transition-colors duration-200 ${
+                  enabled ? "bg-[#24389C1A]" : "bg-[#E1E2E5]"
+                }`}
+              >
+                <span
+                  className={`
         absolute
         left-0.75
         bottom-0.75
@@ -63,15 +62,11 @@ const RouterSettingPage = () => {
         rounded-full
         transition-all
         duration-300
-        ${
-          enabled
-            ? "translate-x-6 bg-[#24389C]"
-            : "translate-x-0 bg-white"
-        }
+        ${enabled ? "translate-x-6 bg-[#24389C]" : "translate-x-0 bg-white"}
       `}
-                  />
-                </label>
-              </div>
+                />
+              </label>
+            </div>
           </div>
 
           {/* wifi configuration */}
@@ -263,22 +258,22 @@ const RouterSettingPage = () => {
 
           <div className="bg-white rounded-2xl shadow-md p-6 flex flex-row items-center gap-6">
             <div className="border-2 border-[#C5C5D433] rounded-xl p-2 w-fit">
-              <QrCode size={140}/>
+              <QrCode size={140} />
             </div>
 
             <div className="flex flex-col gap-1">
-
-              <p className="text-[#24389C] text-base font-semibold">Scan to Connect</p>
-              <p className="text-[#454652] text-sm">Share your network easily with guests.</p>
+              <p className="text-[#24389C] text-base font-semibold">
+                Scan to Connect
+              </p>
+              <p className="text-[#454652] text-sm">
+                Share your network easily with guests.
+              </p>
               <div className="flex flex-row gap-2 items-center text-[#24389C] bg-[#24389C1A] px-4 py-2 rounded-full text-xs w-fit font-semibold">
-                <WifiIcon size={16}/>
+                <WifiIcon size={16} />
                 <p>WorldLink_Beom_5G</p>
               </div>
-
             </div>
           </div>
-
-
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { ArrowLeft, Info } from "lucide-react";
+import { ArrowLeft, ChevronDown, Info } from "lucide-react";
 import { useNavigate } from "react-router";
 
 const ReportProblemPage = () => {
@@ -34,16 +34,21 @@ const ReportProblemPage = () => {
             <label className="text-[#454652] text-xs font-semibold">
               Problem Category
             </label>
-            <select
+            <div className="relative">
+              <select
               id="problem"
               name="problem"
-              className="p-3 bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg text-[#191C1E] text-sm"
+              className="p-3 py-2.5 appearance-none bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg text-[#191C1E] text-sm w-full focus:outline-none"
             >
               <option value="connection-issue">Connection Issue</option>
               <option value="router-issue">Router Issue</option>
               <option value="billing-account">Billing and Account</option>
               <option value="coverage-issue">Coverage Issue</option>
             </select>
+            <ChevronDown className="w-4 h-4 text-[#454652] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+
+            </div>
+            
           </div>
           <div className="flex flex-col w-full gap-2">
             <label className="text-[#454652] text-xs font-semibold">

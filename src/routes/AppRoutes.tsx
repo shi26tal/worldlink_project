@@ -14,7 +14,8 @@ import NewConnectionPage from "../pages/Support-Page/NewConnectionPage";
 import ReportProblemPage from "../pages/Support-Page/ReportProblemPage";
 import EmployeeVerificationPage from "../pages/EmployeeVerificationPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
-import NotificationPage from "../pages/NotificationPage";
+import NotificationPage from "../pages/Notification-Page/NotificationPage";
+import NotificationSettingPage from "../pages/Notification-Page/NotificationSettingPage";
 
 const AppRoutes = () => {
   return (
@@ -22,19 +23,35 @@ const AppRoutes = () => {
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />}></Route>
         <Route path="profile" element={<ProfilePage />} />
-        <Route path="employee-verification" element={<EmployeeVerificationPage />}></Route>
+        <Route
+          path="employee-verification"
+          element={<EmployeeVerificationPage />}
+        ></Route>
         <Route path="change-password" element={<ChangePasswordPage />}></Route>
-        <Route path="notification" element={<NotificationPage />}></Route>
+
         <Route path="refer" element={<ReferPage />}></Route>
         <Route path="my-plan" element={<MyPlanPage />} />
         <Route path="router-settings" element={<RouterSettingPage />} />
         <Route path="bills-and-payments" element={<BillsPaymentPage />} />
-        <Route path="support" element={<SupportPage />} />
-        <Route path="support/location-shift" element={<LocationShiftPage />} />
-        <Route path="support/new-connection" element={<NewConnectionPage />} />
-        <Route path="support/report-problem" element={<ReportProblemPage />} />
+
         <Route path="benefits" element={<Benefits />}></Route>
         <Route path="offers" element={<OfferPage />}></Route>
+
+        {/* profile */}
+
+        {/* notification */}
+        <Route path="notification">
+          <Route index element={<NotificationPage />}></Route>
+          <Route path="settings" element={<NotificationSettingPage />}></Route>
+        </Route>
+
+        {/* support */}
+        <Route path="support">
+          <Route index element={<SupportPage />}></Route>
+          <Route path="location-shift" element={<LocationShiftPage />} />
+          <Route path="new-connection" element={<NewConnectionPage />} />
+          <Route path="report-problem" element={<ReportProblemPage />} />
+        </Route>
       </Route>
     </Routes>
   );

@@ -6,14 +6,18 @@ import {
   FileText,
   Check,
   Settings,
-  Headphones,
   Headset,
 } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const tabs = ["All (12)", "Network Alerts", "Billing", "Offers", "System"];
 
 const NotificationPage = () => {
   const [activeTab, setActiveTab] = useState("All (12)");
+
+  const navigate = useNavigate()
+
+
 
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
@@ -33,7 +37,7 @@ const NotificationPage = () => {
             <Check className="w-4 h-4" color="#24389C" />
             Mark all as read
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 text-[#454652] text-sm font-medium">
+          <button className="flex items-center gap-2 px-4 py-2 text-[#454652] text-sm font-medium" onClick={()=> navigate('/notification/settings')}>
             <Settings className="w-4 h-4" />
             Notification Settings
           </button>
