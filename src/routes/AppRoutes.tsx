@@ -16,12 +16,14 @@ import EmployeeVerificationPage from "../pages/EmployeeVerificationPage";
 import ChangePasswordPage from "../pages/ChangePasswordPage";
 import NotificationPage from "../pages/Notification-Page/NotificationPage";
 import NotificationSettingPage from "../pages/Notification-Page/NotificationSettingPage";
+import DiagnosticPage from "../pages/Diagnostic-Page/DiagnosticPage";
 
 const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />}></Route>
+
         <Route path="profile" element={<ProfilePage />} />
         <Route
           path="employee-verification"
@@ -52,6 +54,9 @@ const AppRoutes = () => {
           <Route path="new-connection" element={<NewConnectionPage />} />
           <Route path="report-problem" element={<ReportProblemPage />} />
         </Route>
+
+        <Route path="diagnostic" element={<DiagnosticPage />}></Route>
+
       </Route>
     </Routes>
   );

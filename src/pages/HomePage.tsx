@@ -12,6 +12,7 @@ import {
   Rocket,
   ShieldCheck,
   Square,
+  Zap,
 } from "lucide-react";
 import {
   Bar,
@@ -51,7 +52,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="bg-[#F8F9FC] p-4 m d:p-6">
+      <div className="bg-[#F8F9FC] p-4 md:p-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-6">
           {/* Live Network Status Card */}
           <div className="col-span-12 bg-white rounded-xl shadow-md p-6 lg:p-8 text-[#424751] flex flex-col lg:flex-row justify-between gap-8">
@@ -84,29 +85,35 @@ const HomePage = () => {
           </div>
 
           {/* current download speed */}
-          <div className="col-span-12 md:col-span-6 xl:col-span-4 bg-[#38BDF8B2] p-6 lg:p-8 rounded-lg shadow-md">
-            <h3 className="text-[#424751] text-center font-normal tracking-[0.8px] mt-10 mb-6">
-              CURRENT DOWNLOAD SPEED
+          <div className="col-span-12 md:col-span-6 xl:col-span-4 bg-[#FFFFFFB2] p-6 lg:p-8 rounded-lg shadow-md">
+            <h3 className="text-[#444653] uppercase text-center text-base font-normal tracking-[0.8px] mb-4">
+              Worldlink Diagnostic
             </h3>
 
-            <div className="h-32 flex justify-center items-center">
+            <div className=" relative h-32 flex justify-center items-center">
               <GaugeComponent
                 value={245}
-                type="semicircle"
+                type="radial"
+                minValue={0}
+                maxValue={360}
+                startAngle={-180}
+                endAngle={180}
                 arc={{
-                  width: 0.1,
-                  colorArray: ["#003D7C"],
-                  subArcs: [{ limit: 500 }],
+                  width: 0.15,
+                  padding: 0,
+                  cornerRadius: 0,
+                  // 0 -> 245 is colored blue; everything after that
+                  // (245 -> 360) falls through to the gray subArc, so
+                  // the ring is always a full circle, only the
+                  // proportion up to the current value is blue.
+                  subArcs: [
+                    { limit: 245, color: "#003D7C" },
+                    { color: "#E5E7EB" },
+                  ],
                 }}
                 labels={{
                   valueLabel: {
-                    formatTextValue: () => `245\nMbps`,
-                    style: {
-                      fill: "#003D7C",
-                      textShadow: "none",
-                      fontSize: "32px",
-                      whiteSpace: "pre-line",
-                    },
+                    formatTextValue: () => ``,
                   },
                   tickLabels: {
                     hideMinMax: true,
@@ -114,22 +121,40 @@ const HomePage = () => {
                 }}
                 pointer={{ hide: true }}
               />
+
+              <div className="absolute flex flex-col items-center">
+                <span className="text-2xl font-bold text-[#002D89]">245</span>
+                <span className="text-xs text-[#444653]">Mbps</span>
+              </div>
             </div>
 
-            <div className="flex justify-between items-center border-t border-[#C2C6D333] mt-6 pt-6 px-6">
-              <div className="flex flex-col items-center">
-                <p>Upload</p>
-                <span>112 Mbps</span>
+            <div className="grid grid-cols-2 gap-4 pt-6">
+              <div className="flex flex-col items-center bg-[#F5F3EF] rounded-lg py-2">
+                <p className="text-[#444653]">Download</p>
+                <span className="text-[#002D89] font-bold">245 Mbps</span>
               </div>
-              <div className=" flex flex-col items-center">
-                <p>Jitter</p>
-                <span>2 ms</span>
+              <div className="flex flex-col items-center bg-[#F5F3EF] rounded-lg py-2">
+                <p className="text-[#444653]">Ping</p>
+                <span className="text-[#002D89] font-bold">32ms</span>
+              </div>
+              <div className="flex flex-col items-center bg-[#F5F3EF] rounded-lg py-2">
+                <p className="text-[#444653]">Upload</p>
+                <span className="text-[#002D89] font-bold">112 Mbps</span>
+              </div>
+              <div className="flex flex-col items-center bg-[#F5F3EF] rounded-lg py-2">
+                <p className="text-[#444653]">Jitter</p>
+                <span className="text-[#002D89] font-bold">12ms</span>
               </div>
             </div>
+
+            <button className="mt-6 w-full flex items-center justify-center gap-2 bg-[#0C3D81] hover:bg-[#0a3369] text-white font-semibold tracking-wide py-2.5 rounded-lg transition-colors cursor-pointer" onClick={()=> navigate('/diagnostic')}>
+              <Zap size={18} fill="white" />
+              <span>Run Diagnostic</span>
+            </button>
           </div>
 
           {/* active subscriptions */}
-          <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-white p-6 lg:p-8 rounded-lg shadow-md text-[#424751]">
+          <div className="col-span-12 md:col-span-6 xl:col-span-5 bg-white p-6 lg:p-8 flex flex-col rounded-lg shadow-md text-[#424751]">
             <div className="flex flex-col sm:flex-row justify-between gap-4 items-center">
               <div>
                 <h3 className="uppercase text-[16px] tracking-wide">
@@ -144,7 +169,7 @@ const HomePage = () => {
                 300 Mbps
               </span>
             </div>
-            <div className="grid grid-cols-2 gap-y-4 mt-8 font-normal text-[16px]">
+            <div className="grid grid-cols-2 gap-y-4 mt-10 font-normal text-[16px]">
               <p>Billing Cycle</p>
 
               <p className="text-right">Monthly</p>
@@ -157,7 +182,7 @@ const HomePage = () => {
 
               <p className="text-right text-[#16A34A]">Auto-pay Active</p>
             </div>
-            <div className="bg-[#C2C6D31A] rounded-xl p-4 mt-8">
+            <div className="bg-[#C2C6D31A] rounded-xl p-4 mt-14">
               <div className="flex flex-row gap-3">
                 <div className="bg-[#003D7C] text-white rounded-lg py-3 px-2">
                   <ArrowUpFromLine size={22} />
@@ -193,7 +218,7 @@ const HomePage = () => {
           </div>
 
           {/* WeeklyUsage */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-5 bg-white rounded-xl shadow-md p-6 lg:p-8">
+          <div className="col-span-12 lg:col-span-6 xl:col-span-8 bg-white rounded-xl shadow-md p-6 lg:p-8">
             <p className="text-[#424751] text-base uppercase tracking-widest mb-5">
               Weekly Usage (GB)
             </p>
@@ -295,7 +320,7 @@ const HomePage = () => {
           </div>
 
           {/* AI Diagnostic */}
-          <div className="col-span-12 lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-md p-6 lg:p-8">
+          {/* <div className="col-span-12 lg:col-span-6 xl:col-span-3 bg-white rounded-xl shadow-md p-6 lg:p-8">
             <div className="flex flex-col items-center mt-4">
               <div className="p-6 bg-[#F3F4F6] text-[#003D7C] rounded-full">
                 <BrainCog size={40} />
@@ -316,7 +341,7 @@ const HomePage = () => {
                 <ArrowRight size={16} />
               </button>
             </div>
-          </div>
+          </div> */}
 
           {/* connected devices */}
 
@@ -342,8 +367,6 @@ const HomePage = () => {
               <span>192.168.1.104</span>
             </div>
           </div>
-
-          
 
           {/* restart router */}
           <div className="col-span-12 md:col-span-4 lg:col-span-4 xl:col-span-3">
