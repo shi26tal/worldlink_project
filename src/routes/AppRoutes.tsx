@@ -17,6 +17,7 @@ import ChangePasswordPage from "../pages/ChangePasswordPage";
 import NotificationPage from "../pages/Notification-Page/NotificationPage";
 import NotificationSettingPage from "../pages/Notification-Page/NotificationSettingPage";
 import DiagnosticPage from "../pages/Diagnostic-Page/DiagnosticPage";
+import NoInternetPage from "../pages/Diagnostic-Page/NoInternetPage";
 
 const AppRoutes = () => {
   return (
@@ -55,7 +56,10 @@ const AppRoutes = () => {
           <Route path="report-problem" element={<ReportProblemPage />} />
         </Route>
 
-        <Route path="diagnostic" element={<DiagnosticPage />}></Route>
+        <Route path="diagnostic">
+          <Route index element={<DiagnosticPage />}></Route>
+          <Route path="no-internet" element={<NoInternetPage />}></Route>
+        </Route>
 
       </Route>
     </Routes>

@@ -3,9 +3,9 @@ import GaugeComponent from "react-gauge-component";
 import ReferBanner from "../components/ReferBanner";
 
 import {
-  ArrowRight,
+ 
   ArrowUpFromLine,
-  BrainCog,
+  
   Dot,
   NotepadText,
   Power,
@@ -240,11 +240,11 @@ const HomePage = () => {
 
             <div className="mb-5 flex justify-center gap-6 flex-wrap">
               <div className="flex flex-row gap-1">
-                <Square fill="#4251B6" stroke-width="0" />
+                <Square fill="#4251B6" strokeWidth="0" />
                 <span>Upload</span>
               </div>
               <div className="flex flex-row gap-1">
-                <Square fill="#a0a8da" stroke-width="0" />
+                <Square fill="#a0a8da" strokeWidth="0" />
                 <span>Download</span>
               </div>
             </div>

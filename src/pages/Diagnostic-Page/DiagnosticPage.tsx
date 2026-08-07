@@ -1,6 +1,8 @@
 import { CircleCheck, Gauge, Wallet, WifiOff, Zap } from "lucide-react";
+import { useNavigate } from "react-router";
 
 const DiagnosticPage = () => {
+    const navigate = useNavigate()
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
       <div className="bg-linear-to-r from-[#24389CCC] via-[#24389C66] to-[#24389C00] px-12 py-22 rounded-2xl mb-6">
@@ -56,7 +58,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full cursor-pointer hover:bg-[#f5f7ff]" onClick={()=> navigate('/diagnostic/no-internet')}>
             Start Troublshooting
           </button>
         </div>
@@ -93,7 +95,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
             Start Troublshooting
           </button>
         </div>
@@ -128,7 +130,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
             Check Account
           </button>
         </div>
@@ -167,7 +169,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
             Check Service
           </button>
         </div>
