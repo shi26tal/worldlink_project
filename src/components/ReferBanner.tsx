@@ -1,15 +1,12 @@
 import { useNavigate } from "react-router";
 import { Gift } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { startReferral } from "../redux";
-import type { AppDispatch } from "../redux/store";
+
 
 const ReferBanner = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch<AppDispatch>();
+  
 
   const handleClick = () => {
-    dispatch(startReferral());
 
     navigate('/refer')
   };

@@ -1,1 +1,1 @@
-export {startReferral,openReferralForm,closeReferralForm,setFormData,submitReferral} from './referBanner/referAction'
+export {openReferralForm,closeReferralForm,setFormData,submitReferral} from './referBanner/referAction'

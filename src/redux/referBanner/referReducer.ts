@@ -1,4 +1,4 @@
-import { CLOSE_REFERRAL_FORM, OPEN_REFERRAL_FORM, SET_FORM_DATA, START_REFERRAL, SUBMIT_REFERRAL } from "./referTypes"
+import { CLOSE_REFERRAL_FORM, OPEN_REFERRAL_FORM, SET_FORM_DATA, SUBMIT_REFERRAL } from "./referTypes"
 
 export type FormData = {
     fullName: string,
@@ -28,9 +28,6 @@ const initialState: ReferState = {
 
 type ReferAction = 
     | {
-        type: "START_REFERRAL"
-    }
-    | {
         type: "OPEN_REFERRAL_FORM"
     }
     | {
@@ -50,12 +47,6 @@ type ReferAction =
 
 const referReducer = (state:ReferState = initialState, action : ReferAction) => {
     switch (action.type){
-        case START_REFERRAL:
-            return{
-                ...state,
-                referralStarted: false,
-
-            };
         case OPEN_REFERRAL_FORM:
             return{
                 ...state,

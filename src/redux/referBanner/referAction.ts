@@ -1,12 +1,8 @@
-import { CLOSE_REFERRAL_FORM, OPEN_REFERRAL_FORM, SET_FORM_DATA, START_REFERRAL, SUBMIT_REFERRAL } from "./referTypes"
+import { CLOSE_REFERRAL_FORM, OPEN_REFERRAL_FORM, SET_FORM_DATA, SUBMIT_REFERRAL } from "./referTypes"
 
 
 
-export const startReferral = ()=> {
-    return {
-        type: START_REFERRAL
-    }
-}
+
 
 export const openReferralForm = ()=> {
     return {

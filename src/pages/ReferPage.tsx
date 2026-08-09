@@ -27,10 +27,6 @@ const ReferPage = () => {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const referralStarted = useSelector(
-    (state: RootState) => state.referralStarted,
-  );
-
   const referralCount = useSelector((state: RootState) => state.referralCount);
 
   const isFormOpen = useSelector((state: RootState) => state.isFormOpen);
@@ -95,11 +91,8 @@ const ReferPage = () => {
 
         <div className="px-6 md:px-10 pt-6">
           <div className="border border-[#E2E8F0] rounded-lg p-4">
-            <p className="text-sm text-[#64748B]">Referral status</p>
+            <p className="text-base">Referral status</p>
 
-            <p className="text-lg font-semibold text-[#3F51B5]">
-              {referralStarted ? "Referral process started" : "Not started"}
-            </p>
 
             <p className="text-sm text-[#64748B] mt-2">
               Friends referred: {referralCount}
