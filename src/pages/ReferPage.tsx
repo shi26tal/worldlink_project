@@ -80,7 +80,7 @@ const ReferPage = () => {
             <p className="text-[#475569] text-base">
               Grow our network and get exclusive benefits for every successful
               connection.
-            </p>
+             </p>
           </div>
           <div>
             <img src={ReferImg} alt="refer image" />

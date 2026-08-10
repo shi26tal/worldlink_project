@@ -8,14 +8,12 @@ export type FormData = {
 }
 
 export type ReferState = {
-    referralStarted: boolean,
     referralCount: number,
     isFormOpen: boolean,
     formData: FormData
 } 
 
 const initialState: ReferState = {
-    referralStarted: false,
     referralCount: 0,
     isFormOpen: false,
     formData: {

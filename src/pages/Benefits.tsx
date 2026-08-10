@@ -1,4 +1,4 @@
-import { CircleFadingPlus, MapPin, Phone, Search } from "lucide-react";
+import { MapPin, Phone, Search, Send } from "lucide-react";
 import Map from "../components/Map";
 
 const Benefits = () => {
@@ -66,7 +66,7 @@ const Benefits = () => {
                 </div>
               </div>
               <div>
-                <CircleFadingPlus />
+                <Send />
               </div>
             </div>
             <div className="p-8 bg-white rounded-lg w-full flex flex-row justify-between items-center">
@@ -87,7 +87,7 @@ const Benefits = () => {
                 </div>
               </div>
               <div>
-                <CircleFadingPlus />
+                <Send />
               </div>
             </div>
 
@@ -109,7 +109,7 @@ const Benefits = () => {
                 </div>
               </div>
               <div>
-                <CircleFadingPlus />
+                <Send />
               </div>
             </div>
           </div>
