@@ -18,6 +18,9 @@ import NotificationPage from "../pages/Notification-Page/NotificationPage";
 import NotificationSettingPage from "../pages/Notification-Page/NotificationSettingPage";
 import DiagnosticPage from "../pages/Diagnostic-Page/DiagnosticPage";
 import NoInternetPage from "../pages/Diagnostic-Page/NoInternetPage";
+import SlowSpeedPage from "../pages/Diagnostic-Page/SlowSpeedPage";
+import AccountPage from "../pages/Diagnostic-Page/AccountPage";
+import NetTVStatusPage from "../pages/Diagnostic-Page/NetTVStatusPage";
 
 const AppRoutes = () => {
   return (
@@ -59,6 +62,9 @@ const AppRoutes = () => {
         <Route path="diagnostic">
           <Route index element={<DiagnosticPage />}></Route>
           <Route path="no-internet" element={<NoInternetPage />}></Route>
+          <Route path="slow-speed" element={<SlowSpeedPage />}></Route>
+          <Route path="account" element={<AccountPage />}></Route>
+          <Route path="nettv-status" element={<NetTVStatusPage />}></Route>
         </Route>
 
       </Route>

@@ -95,7 +95,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer" onClick={()=> navigate('/diagnostic/slow-speed')}>
             Start Troublshooting
           </button>
         </div>
@@ -130,7 +130,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer" onClick={()=> navigate('/diagnostic/account')}>
             Check Account
           </button>
         </div>
@@ -169,7 +169,7 @@ const DiagnosticPage = () => {
             </div>
           </div>
 
-          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer">
+          <button className="text-[#24389C] border border-[#24389C] rounded-lg p-2 w-full hover:bg-[#f5f7ff] cursor-pointer" onClick={()=> navigate('/diagnostic/nettv-status')}>
             Check Service
           </button>
         </div>
