@@ -11,7 +11,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex">
-      {/* Back arrow*/}
+      {/* back arrow*/}
       <Link
         to="/diagnostic"
         className="flex items-center gap-2 text-sm text-[#454652] hover:text-[#24389C]"
