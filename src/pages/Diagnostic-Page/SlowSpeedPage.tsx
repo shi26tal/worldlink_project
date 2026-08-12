@@ -1,9 +1,15 @@
-import { CircleAlert, Dot, RotateCcw, RouterIcon } from "lucide-react";
+import { CircleAlert, CircleUser, Dot, RotateCcw, RouterIcon, X } from "lucide-react";
 import Navbar from "./Navbar";
 import GaugeComponent from "react-gauge-component";
 
 
 const SlowSpeedPage = () => {
+
+  const results = [
+    {icon: <CircleUser /> , name: 'Account Status',info: 'Subscription Active' , status: "HEALTHY" , detail: 'Details' },
+    {icon: <CircleUser /> , name: 'Account Status',info: 'Subscription Active' , status: "HEALTHY" , detail: 'Details' }
+  ]
+
   return (
     <div className="bg-[#F8F9FC] p-4 md:p-6">
       <Navbar />
@@ -21,7 +27,7 @@ const SlowSpeedPage = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-12 gap-6">
+      <div className="grid grid-cols-12 gap-6 mb-6">
         <div className="col-span-4 bg-white rounded-xl border border-[#C3C5D9] p-8">
           <div className="flex justify-center">
             <h4 className="uppercase text-[#737688] text-sm font-semibold">
@@ -105,19 +111,65 @@ router. Updating will improve stability.</p>
 
           </div>
 
-          <div>
-            <div>
-              <CircleAlert />
+          <div className="flex p-4 bg-[#003EC7] rounded-xl text-white justify-between">
+            <div className="flex gap-3 items-center" >
+              <CircleAlert size={20}/>
               <p>
-                Premium users get 24/7 dedicated monitoring.
-                <span>Upgrade now</span>
+                Premium users get 24/7 dedicated monitoring. 
+                <span className="underline">Upgrade now</span>
               </p>
             </div>
+            <X />
           </div>
 
 
         </div>
       </div>
+
+      <div className="rounded-xl border border-[#C3C5D9] bg-white">
+        {/* top */}
+        <div className="bg-[#EFF4FF80] p-6 flex justify-between items-center">
+          <div>
+            <h2 className="text-2xl font-semibold">All Diagnostics Results</h2>
+          </div>
+          <div className="flex gap-4 ">
+            <div className="flex items-center">
+              <Dot color="#22C55E" strokeWidth={5}/>
+              <span className="text-[#737688] text-xs">Pass</span>
+            </div>
+            <div className="flex items-center">
+              <Dot color="#F59E0B" strokeWidth={5}/>
+              <span className="text-[#737688] text-xs">Warning</span>
+            </div>
+          </div>
+
+
+        </div>
+
+        {/* result */}
+        <div>
+          {results.map((result)=> (
+            <div className="flex gap-4 items-center p-8 border-t border-[#C3C5D9]">
+              <div className="ml-16">{result.icon}</div>
+              <div className="mr-16">
+                {result.name}
+              </div>
+              <div className="mr-28">
+                {result.info}
+              </div>
+              <div className="">
+                {result.status}
+              </div>
+              <div className="">
+                {result.detail}
+              </div>
+            </div>
+          ))}
+        </div>
+        
+
+      </div>
+
     </div>
   );
 };
