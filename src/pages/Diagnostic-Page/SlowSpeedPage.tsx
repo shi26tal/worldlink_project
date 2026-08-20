@@ -126,18 +126,6 @@ const SlowSpeedPage = () => {
             <h1 className="text-2xl font-semibold">Smart Recommendations</h1>
           </div>
           <div className="grid grid-cols-6 gap-6 mb-6">
-            <div className="col-span-3 border border-[#C3C5D94D] bg-[#EFF4FF] rounded-xl p-6">
-              <div className="p-3 rounded-xl bg-[#003EC71A] w-fit mb-4">
-                <RouterIcon color="#003EC7" />
-              </div>
-              <div className="py-2">
-                <h4 className="text-sm mb-2">Firmware Update Available</h4>
-                <p className="text-[#5C5E65] text-xs">
-                  A new security patch is available for your router. Updating
-                  will improve stability.
-                </p>
-              </div>
-            </div>
 
             <div className="col-span-3 border border-[#C3C5D94D] bg-[#EFF4FF] rounded-xl p-6">
               <div className="p-3 rounded-xl bg-[#003EC71A] w-fit mb-4">
@@ -151,6 +139,20 @@ const SlowSpeedPage = () => {
                 </p>
               </div>
             </div>
+            <div className="col-span-3 border border-[#C3C5D94D] bg-[#EFF4FF] rounded-xl p-6">
+              <div className="p-3 rounded-xl bg-[#0055691A] w-fit mb-4">
+                <RouterIcon color="#005569" />
+              </div>
+              <div className="py-2">
+                <h4 className="text-sm mb-2">Optimize CHannel</h4>
+                <p className="text-[#5C5E65] text-xs">
+                  Switching to 5GHz Channel 48 might reduce interference from
+                  neighbors.
+                </p>
+              </div>
+            </div>
+
+            
           </div>
 
           <div className="flex p-4 bg-[#003EC7] rounded-xl text-white justify-between">
@@ -263,12 +265,16 @@ const SlowSpeedPage = () => {
         </div>
 
         <div className="col-span-4 rounded-xl border border-[#C3C5D9] bg-[#003EC7] p-6">
-          <p className="text-white text-sm font-semibold mb-2">Need Professional help?</p>
+          <p className="text-white text-sm font-semibold mb-2">
+            Need Professional help?
+          </p>
           <p className="text-[#FFFFFFCC] text-xs mb-6">
             Our engineers can remotely optimize your router settings for gaming
             or streaming.
           </p>
-          <button className="rounded-lg text-xs  font-semibold bg-white text-[#003EC7] px-4 py-2">Chat with Support</button>
+          <button className="rounded-lg text-xs  font-semibold bg-white text-[#003EC7] px-4 py-2">
+            Chat with Support
+          </button>
         </div>
       </div>
     </div>
