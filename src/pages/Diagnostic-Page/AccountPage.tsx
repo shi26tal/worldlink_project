@@ -1,8 +1,10 @@
 import {
+  ArrowRight,
   BadgeCheck,
   BanknoteCheck,
   CalendarDays,
   Download,
+  Headset,
   PrinterCheck,
   RotateCcw,
   Timer,
@@ -215,8 +217,10 @@ const AccountPage = () => {
         {/* instant pay */}
         <div className="col-span-4 p-6 bg-[#24389C] rounded-2xl">
           <div className="mb-8">
-            <h5 className="text-white text-xl font-semibold mb-2">Instant Pay</h5>
-            <p className="text-[#FFFFFFCC] text-base" >
+            <h5 className="text-white text-xl font-semibold mb-2">
+              Instant Pay
+            </h5>
+            <p className="text-[#FFFFFFCC] text-base">
               Maintain your uninterrupted connectivity. Pay for the upcoming
               month today.
             </p>
@@ -230,8 +234,36 @@ const AccountPage = () => {
               <span>Next Invoice</span>
               <span>$45.00</span>
             </div>
-
           </div>
+
+          <button className="text-[#24389C] flex gap-1 bg-white py-4 w-full rounded-xl items-center justify-center">
+            <span>Pay Now</span>
+            <ArrowRight size={20} />
+          </button>
+        </div>
+
+        {/* assiatance */}
+        <div className="col-span-12 bg-[#9CB0FF33] border border-[#9CB0FF66] rounded-2xl p-6 flex gap-6 items-center">
+          <div className="p-4 rounded-full bg-[#9CB0FF] w-fit">
+            <Headset color="#2B4088" />
+          </div>
+
+          <div>
+            <h4 className="text-[#2B4088] font-semibold text-base">
+              Need Administrative Assistance?
+            </h4>
+            <p className="text-[#2B4088B2] text-sm">
+              Our billing specialists are available 24/7 to resolve complex
+              payment issues or update your account details.
+            </p>
+          </div>
+
+          <button className="text-[#24389C] text-base font-semibold bg-white rounded-xl border border-[#C5C5D4]">
+            <span>Chat with Agent</span>
+          </button>
+          <button>
+            <span>Open Ticket</span>
+          </button>
         </div>
       </div>
     </div>
