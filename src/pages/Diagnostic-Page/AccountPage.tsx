@@ -201,10 +201,10 @@ const AccountPage = () => {
             </div>
           </div>
 
-          <div className="flex flex-col px-10 py-6">
+          <div className="flex flex-col px-10 py-3">
             {transactions.map((list) => (
-              <div key={list.id} className="flex justify-between pr-4">
-                <div>{list.id}</div>
+              <div key={list.id} className="flex justify-between pr-4 text-sm py-5 border-b border-[#C5C5D433]">
+                <div className="font-semibold">{list.id}</div>
                 <div>{list.date}</div>
                 <div>{list.amount}</div>
                 <div>{list.status}</div>
@@ -243,27 +243,31 @@ const AccountPage = () => {
         </div>
 
         {/* assiatance */}
-        <div className="col-span-12 bg-[#9CB0FF33] border border-[#9CB0FF66] rounded-2xl p-6 flex gap-6 items-center">
-          <div className="p-4 rounded-full bg-[#9CB0FF] w-fit">
-            <Headset color="#2B4088" />
+        <div className="col-span-12 bg-[#9CB0FF33] border border-[#9CB0FF66] rounded-2xl p-6 flex justify-between items-center ">
+          <div className="flex gap-6 items-center">
+            <div className="p-4 rounded-full  bg-[#9CB0FF] w-fit">
+              <Headset color="#2B4088" />
+            </div>
+
+            <div className="max-w-150">
+              <h4 className="text-[#2B4088] font-semibold text-base">
+                Need Administrative Assistance?
+              </h4>
+              <p className="text-[#2B4088B2] text-sm">
+                Our billing specialists are available 24/7 to resolve complex
+                payment issues or update your account details.
+              </p>
+            </div>
           </div>
 
-          <div>
-            <h4 className="text-[#2B4088] font-semibold text-base">
-              Need Administrative Assistance?
-            </h4>
-            <p className="text-[#2B4088B2] text-sm">
-              Our billing specialists are available 24/7 to resolve complex
-              payment issues or update your account details.
-            </p>
+          <div className="gap-4 flex">
+            <button className="text-[#24389C] text-base font-semibold bg-white rounded-xl border border-[#C5C5D4] py-3 px-6">
+              <span>Chat with Agent</span>
+            </button>
+            <button className="text-white text-base font-semibold bg-[#24389C] rounded-xl border border-[#C5C5D4] py-3 px-6">
+              <span>Open Ticket</span>
+            </button>
           </div>
-
-          <button className="text-[#24389C] text-base font-semibold bg-white rounded-xl border border-[#C5C5D4]">
-            <span>Chat with Agent</span>
-          </button>
-          <button>
-            <span>Open Ticket</span>
-          </button>
         </div>
       </div>
     </div>
