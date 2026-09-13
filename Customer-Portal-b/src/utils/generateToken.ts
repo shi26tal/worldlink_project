@@ -5,6 +5,7 @@ export const generateToken = (userId : number, userName : string ) => {
   const payload = {
     id: userId,
     userName: userName,
+    iss: userName
   };
   const secretKey = process.env.JWT_SECRET;
 

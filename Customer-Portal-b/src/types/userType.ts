@@ -15,5 +15,8 @@ export type registerType = {
   email:string,
   userName:string,
   password:string,
-  name:string
+  name:string,
+  createdBy?:string,
+  updateBy?:string
 }
+

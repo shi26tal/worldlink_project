@@ -9,13 +9,13 @@ import {
 import { sequelize } from "../config/database.js";
 import bcrypt from "bcrypt";
 
-interface UserAttributes {
-  id: number;
-  name: string;
-  userName: string;
-  email: string;
-  password: string;
-}
+// interface UserAttributes {
+//   id: number;
+//   name: string;
+//   userName: string;
+//   email: string;
+//   password: string;
+// }
 
 // class User extends Model<UserAttributes> implements UserAttributes{
 //     declare id : number
@@ -31,6 +31,8 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare userName: string;
   declare email: string;
   declare password: string;
+  declare createdBy: CreationOptional<string>;
+  declare updatedBy : CreationOptional<string>;
 }
 
 User.init(
@@ -58,6 +60,14 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    createdBy:{
+        type:DataTypes.STRING,
+        allowNull:true
+    },
+    updatedBy:{
+        type:DataTypes.STRING,
+        allowNull:true
+    }
   },
   { sequelize },
 );

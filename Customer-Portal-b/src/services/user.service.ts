@@ -34,9 +34,7 @@ export const loginUser = async ({ userName, password }: LoginData) => {
   };
 };
 
-
-
-export const registerUser = async (data : registerType) => {
+export const registerUser = async (data: registerType) => {
   const { email, userName, password, name } = data;
 
   const existingUser = await userRepository.findByUserName(userName);
@@ -45,13 +43,71 @@ export const registerUser = async (data : registerType) => {
     throw new Error("this user already exist");
   }
 
-
   const user = await userRepository.createUser({
     name,
     email,
     userName,
-    password
+    password,
+  });
+
+  return user;
+};
+
+export const getAllUsersService = async () => {
+  const user = await userRepository.getUsers();
+
+  return user;
+};
+
+export const updateUserService = async (
+  id: number,
+  updateData: {
+    name?: string;
+    userName?: string;
+    email?: string;
+  },
+) => {
+  const user = await userRepository.updateUsers(id, updateData);
+
+  return user;
+};
+
+export const deleteUserService = async (id: number) => {
+  const user = await userRepository.deleteUsers(id);
+
+  return user;
+};
+
+export const createAuthUserService = async (data: registerType) => {
+  const { email, userName, password, name, createdBy } = data;
+
+  const existingUser = await userRepository.findByUserName(userName);
+
+  if (existingUser) {
+    throw new Error("this user already exist");
+  }
+
+  const user = await userRepository.createAuthUser({
+    name,
+    email,
+    userName,
+    password,
+    createdBy,
   });
 
   return user
+};
+
+export const updateAuthUserService = async (
+  id: number,
+  updateData: {
+    name?: string;
+    userName?: string;
+    email?: string;
+    updatedBy?:string
+  }
+) => {
+  const user = await userRepository.updateAuthUser(id, updateData);
+
+  return user;
 };
