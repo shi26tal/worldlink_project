@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 import { userRepository } from "../repository/user.repository.js";
-import { generateToken } from "../utils/generateToken.js";
+import { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
 import type { registerType, UserAttributes } from "../types/userType.js";
 
 type LoginData = {
@@ -21,10 +22,13 @@ export const loginUser = async ({ userName, password }: LoginData) => {
     throw new Error("Invalid credentials");
   }
 
-  const token = generateToken(user.id, user.userName);
+  const token = generateAccessToken(user.id, user.userName);
+
+  const refreshToken = generateRefreshToken(user.id,user.userName)
 
   return {
     token,
+    refreshToken,
     user: {
       id: user.id,
       name: user.name,
@@ -33,6 +37,24 @@ export const loginUser = async ({ userName, password }: LoginData) => {
     },
   };
 };
+
+export const refreshTokenService = async (refreshToken : string)=> {
+
+  const refreshSecretKey = process.env.JWT_REFRESH_TOKEN
+
+  if(!refreshSecretKey){
+    throw new Error("refresh token key not found")
+  }
+
+  // verify the refresh token
+
+  const decode = jwt.verify(refreshToken,refreshSecretKey) as {id:number , userName:string}
+
+  const accessToken = generateAccessToken(decode.id , decode.userName)
+
+  return accessToken
+
+}
 
 export const registerUser = async (data: registerType) => {
   const { email, userName, password, name } = data;
