@@ -19,21 +19,21 @@ export const generateAccessToken = (userId : number, userName : string ) => {
   return {accessToken}
 }
 
-export const generateRefreshToken = (userId : number,userName:string) => {
-  const payload ={
-    id:userId,
-    userName:userName,
-    iss:userName
-  }
-  const secretRefreshKey = process.env.JWT_REFRESH_TOKEN
+// export const generateRefreshToken = (userId : number,userName:string) => {
+//   const payload ={
+//     id:userId,
+//     userName:userName,
+//     iss:userName
+//   }
+//   const secretRefreshKey = process.env.JWT_REFRESH_TOKEN
 
-  if(!secretRefreshKey){
-    throw new Error("Authentication not found")
-  }
+//   if(!secretRefreshKey){
+//     throw new Error("Authentication not found")
+//   }
 
-  const refreshToken = jwt.sign(payload,secretRefreshKey,{expiresIn:"7d"})
+//   const refreshToken = jwt.sign(payload,secretRefreshKey,{expiresIn:"7d"})
 
-  return refreshToken
+//   return refreshToken
 
 
-}
+// }

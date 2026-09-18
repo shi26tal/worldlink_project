@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 import { userRepository } from "../repository/user.repository.js";
-import { generateAccessToken, generateRefreshToken } from "../utils/generateToken.js";
+import { generateAccessToken } from "../utils/generateToken.js";
 import type { registerType, UserAttributes } from "../types/userType.js";
 
 type LoginData = {
@@ -24,11 +24,10 @@ export const loginUser = async ({ userName, password }: LoginData) => {
 
   const token = generateAccessToken(user.id, user.userName);
 
-  const refreshToken = generateRefreshToken(user.id,user.userName)
+  // const refreshToken = generateRefreshToken(user.id,user.userName)
 
   return {
     token,
-    refreshToken,
     user: {
       id: user.id,
       name: user.name,
@@ -38,38 +37,41 @@ export const loginUser = async ({ userName, password }: LoginData) => {
   };
 };
 
-export const refreshTokenService = async (refreshToken : string)=> {
+export const refreshTokenService = async (token: string) => {
+  const decoded = jwt.decode(token) as {
+    id: number;
+    userName: string;
+  };
 
-  const refreshSecretKey = process.env.JWT_REFRESH_TOKEN
-
-  if(!refreshSecretKey){
-    throw new Error("refresh token key not found")
+  if (!decoded) {
+    throw new Error("Invalid token");
   }
 
-  // verify the refresh token
+  const user = await userRepository.findByUserName(decoded.userName);
 
-  const decode = jwt.verify(refreshToken,refreshSecretKey) as {id:number , userName:string}
+  if (!user) {
+    throw new Error("User not found from token");
+  }
 
-  const accessToken = generateAccessToken(decode.id , decode.userName)
+  const newAccessToken = generateAccessToken(user.id, user.userName);
 
-  return accessToken
-
-}
+  return newAccessToken;
+};
 
 export const registerUser = async (data: registerType) => {
-  const { email, userName, password, name } = data;
+  // const { email, userName, password, name } = data;
 
-  const existingUser = await userRepository.findByUserName(userName);
+  const existingUser = await userRepository.findByUserName(data.userName);
 
   if (existingUser) {
     throw new Error("this user already exist");
   }
 
   const user = await userRepository.createUser({
-    name,
-    email,
-    userName,
-    password,
+    name: data.name,
+    email: data.email,
+    userName: data.userName,
+    password: data.password,
   });
 
   return user;
@@ -101,23 +103,21 @@ export const deleteUserService = async (id: number) => {
 };
 
 export const createAuthUserService = async (data: registerType) => {
-  const { email, userName, password, name, createdBy } = data;
-
-  const existingUser = await userRepository.findByUserName(userName);
+  const existingUser = await userRepository.findByUserName(data.userName);
 
   if (existingUser) {
     throw new Error("this user already exist");
   }
 
   const user = await userRepository.createAuthUser({
-    name,
-    email,
-    userName,
-    password,
-    createdBy,
+    name: data.name,
+    email: data.email,
+    userName: data.userName,
+    password: data.password,
+    createdBy: data.createdBy,
   });
 
-  return user
+  return user;
 };
 
 export const updateAuthUserService = async (
@@ -126,8 +126,8 @@ export const updateAuthUserService = async (
     name?: string;
     userName?: string;
     email?: string;
-    updatedBy?:string
-  }
+    updatedBy?: string;
+  },
 ) => {
   const user = await userRepository.updateAuthUser(id, updateData);
 

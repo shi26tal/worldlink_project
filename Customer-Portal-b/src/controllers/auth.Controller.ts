@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 import { userRepository } from "../repository/user.repository.js";
-import { loginUser, refreshTokenService, registerUser } from "../services/user.service.js";
+import {
+  loginUser,
+  refreshTokenService,
+  registerUser,
+} from "../services/user.service.js";
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -34,38 +38,30 @@ export const login = async (req: Request, res: Response) => {
     const result = await loginUser({ userName, password });
 
     res.status(200).json({ result });
-  } catch (error ) {
-    if(error instanceof Error){
-       return res
-      .status(500)
-      .json({ message: "Server error", error: error.message });
-
+  } catch (error) {
+    if (error instanceof Error) {
+      return res
+        .status(500)
+        .json({ message: "Server error", error: error.message });
     }
-   
   }
 };
 
-export const refreshTokenController = async (req:Request,res:Response) => {
+export const refreshTokenController = async (req: Request, res: Response) => {
   try {
+    const { token } = req.body;
 
-    const {refreshToken } = req.body
+    if (!token) {
+      throw new Error("refresh token required");
+    }
 
-  if(!refreshToken){
-    throw new Error("refresh token required")
-  }
+    const newAccessToken = await refreshTokenService(token);
 
-  const result = await refreshTokenService(refreshToken)
-
-  res.status(200).json(result)
-    
+    res.status(200).json(newAccessToken);
   } catch (error) {
-    res.status(401).json({message:"Invalid or expired refresh token "})
-    
+    res.status(401).json({ message: "Invalid or expired refresh token " });
   }
-  
-
-  
-}
+};
 
 // export const profile = async (req, res) => {
 //   try {

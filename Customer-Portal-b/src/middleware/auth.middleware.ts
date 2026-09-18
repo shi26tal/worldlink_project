@@ -35,7 +35,7 @@ export const authenticate = (
 
     // console.log("PAYLOAD:", payload);
     
-    req.user = payload
+    req.headers["x-auth-user"] = payload.userName
 
     next();
   } catch (error) {

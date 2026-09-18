@@ -68,7 +68,7 @@ export const createAuthUserController = async (req:Request,res:Response) => {
         const {userName,name,email,password} = req.body
 
         //yoh middleware bata aauxa
-        const createdBy = req.user?.userName;
+        const createdBy = req.headers["x-auth-user"] as string
 
         // console.log("created by",createdBy)
 
@@ -92,7 +92,7 @@ export const updateAuthUserController = async (req:Request,res:Response) => {
 
         const updateData = req.body
 
-        const updatedBy = req.user?.userName
+        const updatedBy = req.headers["x-auth-user"]
 
         // console.log("data",updateData)
 
