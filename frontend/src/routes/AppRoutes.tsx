@@ -21,10 +21,15 @@ import NoInternetPage from "../pages/Diagnostic-Page/NoInternetPage";
 import SlowSpeedPage from "../pages/Diagnostic-Page/SlowSpeedPage";
 import AccountPage from "../pages/Diagnostic-Page/AccountPage";
 import NetTVStatusPage from "../pages/Diagnostic-Page/NetTVStatusPage";
+import LoginPage from "../pages/LoginPage";
 
 const AppRoutes = () => {
   return (
     <Routes>
+      {/* public route */}
+      <Route path="/login" element={<LoginPage />}></Route>
+
+      {/* protected route */}
       <Route path="/" element={<AppLayout />}>
         <Route index element={<HomePage />}></Route>
 

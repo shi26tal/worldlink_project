@@ -31,8 +31,6 @@ class User extends Model<InferAttributes<User>, InferCreationAttributes<User>> {
   declare userName: string;
   declare email: string;
   declare password: string;
-  declare createdBy: CreationOptional<string>;
-  declare updatedBy : CreationOptional<string>;
 }
 
 User.init(
@@ -59,14 +57,6 @@ User.init(
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    createdBy:{
-        type:DataTypes.STRING,
-        allowNull:true
-    },
-    updatedBy:{
-        type:DataTypes.STRING,
-        allowNull:true
     }
   },
   { sequelize },

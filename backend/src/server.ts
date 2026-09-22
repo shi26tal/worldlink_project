@@ -1,19 +1,21 @@
 import { sequelize } from "./config/database.js"
 import { config } from "dotenv"
 import express from 'express'
+import cors from 'cors'
 import authRoutes from "./routes/auth.route.js"
 import { authenticate } from "./middleware/auth.middleware.js"
-import {User , Plan} from "./models/index.js"
 import userRoutes from "./routes/user.route.js"
 
 config()
 
 const app = express()
 
+app.use(cors({ origin: "http://localhost:5173" }));
+
 app.use(express.json())
 
 app.use("/auth", authRoutes)
-app.use('/user',userRoutes)
+// app.use('/user',userRoutes)
 
 // app.get("/auth/profile", authenticate, (req, res) => {
 //   res.status(200).json({ message: "you are authenticated"});
@@ -21,7 +23,7 @@ app.use('/user',userRoutes)
 
 
 // ts lai thaha hunna so aafai ley diney
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 5002
 
 app.listen(PORT,()=> {
     console.log(`server is running in ${PORT}`)

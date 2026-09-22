@@ -9,7 +9,11 @@ router.post("/register",register)
 router.post("/login",login)
 
 
-router.post("/refresh",refreshTokenController)
+
+
+// router.post("/refresh",refreshTokenController)
+
+
 // router.get('/profile',authenticate,profile)
 // router.post('/plan',authenticate,addUsersPlan)
 

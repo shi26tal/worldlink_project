@@ -1,10 +1,7 @@
 import { Request, Response } from "express";
 import { userRepository } from "../repository/user.repository.js";
-import {
-  loginUser,
-  refreshTokenService,
-  registerUser,
-} from "../services/user.service.js";
+import { loginUser,registerUser,refreshTokenService } from "../services/auth.service.js";
+
 
 export const register = async (req: Request, res: Response) => {
   try {
@@ -63,41 +60,3 @@ export const refreshTokenController = async (req: Request, res: Response) => {
   }
 };
 
-// export const profile = async (req, res) => {
-//   try {
-//     // get user
-//     const user = await User.findByPk(req.user.id);
-
-//     res.status(200).json({
-//       user,
-//     });
-//   } catch (error) {
-//     return res.status(400).json({
-//         message:"cant get profile"
-//     })
-//   }
-// };
-
-// export const addUsersPlan = async (req,res)=> {
-//     try {
-
-//         const user = await User.findByPk(req.user.id)
-
-//         if(!user){
-//             return res.status(400).json({message: "user not found"})
-//         }
-
-//         const addPlan = await user.createPlan(req.body)
-
-//         res.status(200).json({
-//             addPlan
-//         })
-
-//     } catch (error) {
-
-//         res.status(400).json({
-//             message: 'plan not added'
-//         })
-
-//     }
-// }

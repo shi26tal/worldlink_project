@@ -1,5 +1,5 @@
 import { Model } from "sequelize";
-import { User } from "../models/index.js";
+import { User } from "../models/user.model.js";
 import { registerType } from "../types/userType.js";
 
 // creating object containing all function
