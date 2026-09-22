@@ -11,6 +11,11 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
 
   const navigate = useNavigate()
 
+  const userString = localStorage.getItem("user")
+  // user null ni hunasakxa
+  const user = userString ? JSON.parse(userString) : null
+
+
   return (
     <header className="fixed top-0 left-0 right-0 lg:left-64 z-50 bg-[#F8F9FC] px-4 md:px-6 py-4 shadow-xs">
       <div className="flex items-center justify-between gap-4">
@@ -50,7 +55,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
           <div className="flex items-center gap-2 md:gap-3">
             <div className="flex items-center gap-2 cursor-pointer" onClick={()=> navigate('profile')} >
               <p className="hidden lg:block text-xs font-semibold whitespace-nowrap">
-                Choi Beomgyu
+                {user.name}
               </p>
 
               <img

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Check, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
@@ -14,34 +15,51 @@ const LoginPage = () => {
   const handleLogin = async (e : React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // try {
+    //   const response = await fetch("http://localhost:5002/auth/login", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //       userName,
+    //       password,
+    //     }),
+    //   });
+
+    //   if(!response.ok){
+    //     throw new Error("Invalid username or password")
+    //   }
+
+    //   const data = await response.json();
+    //   console.log("login success", data);
+
+    //   localStorage.setItem("token",data.result.token.accessToken);
+
+    //   navigate("/");
+    // } catch (error) {
+    //   console.error("login error", error);
+    // }
+
     try {
-      const response = await fetch("http://localhost:5002/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          userName,
-          password,
-        }),
-      });
+        const response = await axios.post("http://localhost:5002/auth/login",{
+            userName,
+            password
+        })
 
-      if(!response){
-        throw new Error("Invalid username or password")
-      }
+        const data = response.data
 
-      const data = await response.json();
-      console.log("login success", data);
-//       console.log('data.result',data.result)
-//       console.log("data.result.token:", data.result.token);
-// console.log("data.result.token.accessToken:", data.result.token.accessToken);
+        console.log("login success",data)
 
-      localStorage.setItem("token",data.result.token.accessToken);
+        localStorage.setItem("token",data.result.token.accessToken)
+        localStorage.setItem("user",JSON.stringify(data.result.user))
 
-      navigate("/");
+        navigate("/")
     } catch (error) {
-      console.error("login error", error);
+        console.log("error",error)
     }
+
+
   };
 
   return (

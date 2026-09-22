@@ -22,6 +22,7 @@ import SlowSpeedPage from "../pages/Diagnostic-Page/SlowSpeedPage";
 import AccountPage from "../pages/Diagnostic-Page/AccountPage";
 import NetTVStatusPage from "../pages/Diagnostic-Page/NetTVStatusPage";
 import LoginPage from "../pages/LoginPage";
+import ProtectedRoute from "./ProtectedRoute";
 
 const AppRoutes = () => {
   return (
@@ -30,48 +31,55 @@ const AppRoutes = () => {
       <Route path="/login" element={<LoginPage />}></Route>
 
       {/* protected route */}
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<HomePage />}></Route>
+      <Route element={<ProtectedRoute />}>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />}></Route>
 
-        <Route path="profile" element={<ProfilePage />} />
-        <Route
-          path="employee-verification"
-          element={<EmployeeVerificationPage />}
-        ></Route>
-        <Route path="change-password" element={<ChangePasswordPage />}></Route>
+          <Route path="profile" element={<ProfilePage />} />
+          <Route
+            path="employee-verification"
+            element={<EmployeeVerificationPage />}
+          ></Route>
+          <Route
+            path="change-password"
+            element={<ChangePasswordPage />}
+          ></Route>
 
-        <Route path="refer" element={<ReferPage />}></Route>
-        <Route path="my-plan" element={<MyPlanPage />} />
-        <Route path="router-settings" element={<RouterSettingPage />} />
-        <Route path="bills-and-payments" element={<BillsPaymentPage />} />
+          <Route path="refer" element={<ReferPage />}></Route>
+          <Route path="my-plan" element={<MyPlanPage />} />
+          <Route path="router-settings" element={<RouterSettingPage />} />
+          <Route path="bills-and-payments" element={<BillsPaymentPage />} />
 
-        <Route path="benefits" element={<Benefits />}></Route>
-        <Route path="offers" element={<OfferPage />}></Route>
+          <Route path="benefits" element={<Benefits />}></Route>
+          <Route path="offers" element={<OfferPage />}></Route>
 
-        {/* profile */}
+          {/* profile */}
 
-        {/* notification */}
-        <Route path="notification">
-          <Route index element={<NotificationPage />}></Route>
-          <Route path="settings" element={<NotificationSettingPage />}></Route>
+          {/* notification */}
+          <Route path="notification">
+            <Route index element={<NotificationPage />}></Route>
+            <Route
+              path="settings"
+              element={<NotificationSettingPage />}
+            ></Route>
+          </Route>
+
+          {/* support */}
+          <Route path="support">
+            <Route index element={<SupportPage />}></Route>
+            <Route path="location-shift" element={<LocationShiftPage />} />
+            <Route path="new-connection" element={<NewConnectionPage />} />
+            <Route path="report-problem" element={<ReportProblemPage />} />
+          </Route>
+
+          <Route path="diagnostic">
+            <Route index element={<DiagnosticPage />}></Route>
+            <Route path="no-internet" element={<NoInternetPage />}></Route>
+            <Route path="slow-speed" element={<SlowSpeedPage />}></Route>
+            <Route path="account" element={<AccountPage />}></Route>
+            <Route path="nettv-status" element={<NetTVStatusPage />}></Route>
+          </Route>
         </Route>
-
-        {/* support */}
-        <Route path="support">
-          <Route index element={<SupportPage />}></Route>
-          <Route path="location-shift" element={<LocationShiftPage />} />
-          <Route path="new-connection" element={<NewConnectionPage />} />
-          <Route path="report-problem" element={<ReportProblemPage />} />
-        </Route>
-
-        <Route path="diagnostic">
-          <Route index element={<DiagnosticPage />}></Route>
-          <Route path="no-internet" element={<NoInternetPage />}></Route>
-          <Route path="slow-speed" element={<SlowSpeedPage />}></Route>
-          <Route path="account" element={<AccountPage />}></Route>
-          <Route path="nettv-status" element={<NetTVStatusPage />}></Route>
-        </Route>
-
       </Route>
     </Routes>
   );
