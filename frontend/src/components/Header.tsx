@@ -1,20 +1,53 @@
 import { useNavigate } from "react-router";
 import Profile from "../assets/icon/profile-icon.png";
 import { Bell, LogOut, Menu, Search } from "lucide-react";
+import { useEffect, useState } from "react";
+import { getUser } from "../api/user.api";
 
 type HeaderProps = {
   sidebarOpen: boolean;
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type User ={
+  id:number
+  name:string
+  userName:string
+  email:string
+}
+
 const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
+  const navigate = useNavigate();
+  const [user, setUser] = useState<User | null>(null);
 
-  const navigate = useNavigate()
+  useEffect(() => {
+    const userId =localStorage.getItem("userId")
 
-  const userString = localStorage.getItem("user")
-  // user null ni hunasakxa
-  const user = userString ? JSON.parse(userString) : null
+    if (!userId) {
+      return;
+    }
 
+    const fetchUser = async () => {
+      try {
+        const data = await getUser(Number(userId));
+        // console.log("data:",data)
+
+        setUser(data.result);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId")
+    localStorage.clear()
+
+    navigate("/login");
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 lg:left-64 z-50 bg-[#F8F9FC] px-4 md:px-6 py-4 shadow-xs">
@@ -47,15 +80,18 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
           </button>
 
           {/* Notification */}
-          <button onClick={() => navigate('notification')}>
+          <button onClick={() => navigate("notification")}>
             <Bell size={22} fill="#454652" className="text-[#454652]" />
           </button>
 
           {/* User */}
           <div className="flex items-center gap-2 md:gap-3">
-            <div className="flex items-center gap-2 cursor-pointer" onClick={()=> navigate('profile')} >
+            <div
+              className="flex items-center gap-2 cursor-pointer"
+              onClick={() => navigate("profile")}
+            >
               <p className="hidden lg:block text-xs font-semibold whitespace-nowrap">
-                {user.name}
+                {user?.userName}
               </p>
 
               <img
@@ -65,7 +101,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
               />
             </div>
 
-            <button className="">
+            <button className="" onClick={handleLogout}>
               <LogOut
                 size={24}
                 className="text-[#24389C] cursor-pointer"

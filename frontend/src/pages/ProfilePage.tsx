@@ -12,8 +12,17 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router";
 import Profile from "../assets/p.jpg";
+import { useEffect, useState } from "react";
+import { getUser } from "../api/user.api";
+
+type User ={
+  id:number
+  name:string
+  email:string
+}
 
 const ProfilePage = () => {
+  const[user,setUser] = useState<User | null>(null)
   const navigate = useNavigate();
 
   const handleBack = () => {
@@ -28,6 +37,28 @@ const ProfilePage = () => {
   const handlePasswordChange = () => {
     navigate('/change-password');
   };
+
+  useEffect(() => {
+  const userId = localStorage.getItem("userId");
+
+  if (!userId) {
+    return;
+  }
+
+  const fetchUser = async () => {
+    try {
+      const data = await getUser(Number(userId));
+
+      console.log("Profile user:", data);
+
+      setUser(data.result);
+    } catch (error) {
+      console.error("Failed to fetch user:", error);
+    }
+  };
+
+  fetchUser();
+}, []);
 
   return (
     <div className="bg-[#F8F9FC] min-h-screen p-4 md:p-6">
@@ -56,7 +87,7 @@ const ProfilePage = () => {
           </div>
 
           <div className="flex flex-col justify-between py-4">
-            <h3 className="text-3xl font-semibold">Choi Beomgyu</h3>
+            <h3 className="text-3xl font-semibold">{user?.name}</h3>
             <p className="text-sm">Customer ID: WL-882931</p>
           </div>
         </div>
@@ -87,6 +118,7 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
+                  value={user?.name}
                   placeholder="Choi Beomgyu"
                   className="p-3 bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg placeholder:text-sm outline-none"
                 />
@@ -98,6 +130,7 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="email"
+                  value={user?.email}
                   placeholder="choibeomgyu@example.com"
                   className="p-3 bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg placeholder:text-sm outline-none"
                 />
@@ -164,6 +197,7 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="text"
+                  value={user?.name}
                   placeholder="Choi Beomgyu"
                   className="p-3 bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg placeholder:text-sm outline-none"
                 />
@@ -175,6 +209,7 @@ const ProfilePage = () => {
                 </label>
                 <input
                   type="email"
+                  value={user?.email}
                   placeholder="choibeomgyu@example.com"
                   className="p-3 bg-[#F2F3F6] border border-[#C5C5D4] rounded-lg placeholder:text-sm outline-none"
                 />

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { createAuthUserService, deleteUserService, getAllUsersService, updateAuthUserService, updateUserService } from "../services/user.service.js";
+import { createAuthUserService, deleteUserService, getAllUsersService, getUserByIdService, updateAuthUserService, updateUserService } from "../services/user.service.js";
 
 
 export const getAllUsersController = async(req:Request,res:Response) => {
@@ -15,6 +15,24 @@ export const getAllUsersController = async(req:Request,res:Response) => {
         res.status(500).json({message:"Failed to get all users"})
     }
 
+}
+
+export const getUserByIdController = async(req:Request,res:Response) => {
+    try {
+        const id = Number(req.params.id)
+        const user = await getUserByIdService(id)
+
+        return res.status(200).json({
+            message: "got user by id successfully",
+            result: user
+        })
+        
+    } catch (error) {
+
+        console.error(error)
+        return res.status(400).json({message:"getting user failed"})
+        
+    }
 }
 
 export const updateUserController = async (req:Request,res:Response) => {

@@ -9,6 +9,12 @@ export const getAllUsersService = async () => {
   return user;
 };
 
+export const getUserByIdService = async (id:number)=> {
+  const user = await userRepository.getUserById(id)
+
+  return user
+}
+
 export const updateUserService = async (
   id: number,
   updateData: {

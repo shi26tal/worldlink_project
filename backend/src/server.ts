@@ -10,12 +10,12 @@ config()
 
 const app = express()
 
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: process.env.ORIGIN_URL}));
 
 app.use(express.json())
 
 app.use("/auth", authRoutes)
-// app.use('/user',userRoutes)
+app.use('/user',userRoutes)
 
 // app.get("/auth/profile", authenticate, (req, res) => {
 //   res.status(200).json({ message: "you are authenticated"});

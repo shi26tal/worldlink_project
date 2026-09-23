@@ -1,7 +1,8 @@
-import axios from "axios";
+
 import { Check, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { loginApi } from "../api/auth.api";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,17 +43,12 @@ const LoginPage = () => {
     // }
 
     try {
-        const response = await axios.post("http://localhost:5002/auth/login",{
-            userName,
-            password
-        })
-
-        const data = response.data
+        const data = await loginApi(userName,password)
 
         console.log("login success",data)
 
         localStorage.setItem("token",data.result.token.accessToken)
-        localStorage.setItem("user",JSON.stringify(data.result.user))
+        localStorage.setItem("userId",JSON.stringify(data.result.user.id))
 
         navigate("/")
     } catch (error) {
@@ -107,6 +103,7 @@ const LoginPage = () => {
             />
 
             <button
+            type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280]"
             >

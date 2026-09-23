@@ -25,16 +25,21 @@ const NetTVStatusPage = () => {
         </div>
       </div>
 
-      <div className="bg-white border border-[#E1E2E5] p-5 rounded-xl">
-
-        <div className="flex justify-between">
+      <div className="bg-white border border-[#E1E2E5] p-5 mb-4 rounded-xl">
+        <div className="flex justify-between ">
           <p className="text-base font-semibold">Overall Health</p>
-          <span className="text-[#15803D] bg-[#DCFCE7] text-xs py-1 px-3 rounded-full">OPTIMAL</span>
+          <span className="text-[#15803D] bg-[#DCFCE7] text-xs py-1 px-3 rounded-full">
+            OPTIMAL
+          </span>
         </div>
-
       </div>
 
-
+      <div className="bg-[#465AA3] rounded-xl p-5">
+        <p>Device Info</p>
+        <div className="grid-cols-2">
+          
+        </div>
+      </div>
     </div>
   );
 };

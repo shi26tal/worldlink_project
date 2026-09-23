@@ -17,6 +17,10 @@ export const userRepository = {
     return await User.findAll();
   },
 
+  getUserById: async (id:number)=> {
+    return await User.findByPk(id)
+  },
+
   // update ko lagi id and data chaixa
 
   updateUsers: async (
