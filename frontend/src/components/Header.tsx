@@ -9,27 +9,21 @@ type HeaderProps = {
   setSidebarOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-type User ={
-  id:number
-  name:string
-  userName:string
-  email:string
-}
+type User = {
+  id: number;
+  name: string;
+  userName: string;
+  email: string;
+};
 
 const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
   const navigate = useNavigate();
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    const userId =localStorage.getItem("userId")
-
-    if (!userId) {
-      return;
-    }
-
     const fetchUser = async () => {
       try {
-        const data = await getUser(Number(userId));
+        const data = await getUser();
         // console.log("data:",data)
 
         setUser(data.result);
@@ -42,9 +36,14 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
   }, []);
 
   const handleLogout = () => {
+    const confirmLogout = window.confirm("Are you sure you want to logout?");
+
+    if (!confirmLogout) {
+      return;
+    }
+
     localStorage.removeItem("token");
-    localStorage.removeItem("userId")
-    localStorage.clear()
+    localStorage.clear();
 
     navigate("/login");
   };

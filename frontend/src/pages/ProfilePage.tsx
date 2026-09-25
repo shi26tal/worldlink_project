@@ -15,50 +15,43 @@ import Profile from "../assets/p.jpg";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/user.api";
 
-type User ={
-  id:number
-  name:string
-  email:string
-}
+type User = {
+  id: number;
+  name: string;
+  email: string;
+};
 
 const ProfilePage = () => {
-  const[user,setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
 
   const handleBack = () => {
     navigate("/");
   };
 
-  const handleVerification = () =>{
-    navigate('/employee-verification')
-  }
-
+  const handleVerification = () => {
+    navigate("/employee-verification");
+  };
 
   const handlePasswordChange = () => {
-    navigate('/change-password');
+    navigate("/change-password");
   };
 
   useEffect(() => {
-  const userId = localStorage.getItem("userId");
+    const fetchUser = async () => {
+      try {
+        const data = await getUser();
 
-  if (!userId) {
-    return;
-  }
+        console.log("Profile user:", data);
 
-  const fetchUser = async () => {
-    try {
-      const data = await getUser(Number(userId));
+        setUser(data.result);
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
 
-      console.log("Profile user:", data);
-
-      setUser(data.result);
-    } catch (error) {
-      console.error("Failed to fetch user:", error);
-    }
-  };
-
-  fetchUser();
-}, []);
+    fetchUser();
+  }, []);
 
   return (
     <div className="bg-[#F8F9FC] min-h-screen p-4 md:p-6">
@@ -258,7 +251,10 @@ const ProfilePage = () => {
             </div>
 
             <div>
-              <button className="w-full p-2 bg-white text-[#24389C] text-base rounded-lg cursor-pointer hover:bg-amber-50" onClick={handleVerification}>
+              <button
+                className="w-full p-2 bg-white text-[#24389C] text-base rounded-lg cursor-pointer hover:bg-amber-50"
+                onClick={handleVerification}
+              >
                 Employee Verification
               </button>
             </div>
@@ -270,7 +266,10 @@ const ProfilePage = () => {
               <p>Security</p>
               <LockKeyhole color="#757684" size={20} />
             </div>
-            <div className="flex justify-between mb-3 p-4 cursor-pointer bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg items-center" onClick={handlePasswordChange}>
+            <div
+              className="flex justify-between mb-3 p-4 cursor-pointer bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg items-center"
+              onClick={handlePasswordChange}
+            >
               <div className="flex items-center gap-1.5">
                 <RectangleEllipsis color="#465AA3" />
                 <p className="text-sm">Change Password</p>
@@ -298,13 +297,15 @@ const ProfilePage = () => {
 
           <div className="bg-[#9CB0FF33] border border-[#9CB0FF80] rounded-xl p-5">
             <p className="text-[#2B4088] text-base mb-2">Need Help?</p>
-            <p className="text-[#2B4088CC] text-sm">Our specialized profile support team is available 24/7 to assist with account changes. </p>
+            <p className="text-[#2B4088CC] text-sm">
+              Our specialized profile support team is available 24/7 to assist
+              with account changes.{" "}
+            </p>
             <div className="flex items-center gap-2 mt-4 text-[#24389C]">
               <p className="text-xs font-black">CONTACT SUPPORT</p>
-              <ArrowRight size={12}/>
+              <ArrowRight size={12} />
             </div>
           </div>
-
         </div>
 
         {/* bottom */}
@@ -312,52 +313,47 @@ const ProfilePage = () => {
         <div className="col-span-12 p-6 bg-white">
           <p className="font-semibold text-xl mb-6">Accoount Details</p>
           <div className="grid grid-cols-12 gap-6">
-
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
-
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Account Status</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">
+                Account Status
+              </p>
               <div className="flex items-center">
-                <Dot color="#22C55E" strokeWidth={4}/>
+                <Dot color="#22C55E" strokeWidth={4} />
                 <p className="text-[#15803D] text-base font-semibold">Active</p>
               </div>
-
             </div>
 
             <div className="col-span-8 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
-
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Account Status</p>
-              <p className="text-base font-semibold">Jawalakhel, Lalitpur, NP</p>
-
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">
+                Account Status
+              </p>
+              <p className="text-base font-semibold">
+                Jawalakhel, Lalitpur, NP
+              </p>
             </div>
 
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
-
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Registered Date</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">
+                Registered Date
+              </p>
               <p className="text-base font-semibold">Oct 12,2021</p>
-
-
             </div>
 
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
-
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Current Plan</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">
+                Current Plan
+              </p>
               <p className="text-base font-semibold">Smart Offer 250 Mbps</p>
-
-
             </div>
 
             <div className="col-span-4 bg-[#F2F3F6] border border-[#C5C5D433] rounded-lg p-4">
-
-              <p className="text-[#454652] text-xs font-semibold mb-0.5">Next Renewal</p>
+              <p className="text-[#454652] text-xs font-semibold mb-0.5">
+                Next Renewal
+              </p>
               <p className="text-base font-semibold">Nov 12, 2024</p>
-
-
             </div>
-
           </div>
-
         </div>
-
       </div>
     </div>
   );
