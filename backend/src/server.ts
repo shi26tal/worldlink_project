@@ -15,6 +15,7 @@ app.use(cors({ origin: process.env.ORIGIN_URL}));
 app.use(express.json())
 
 app.use("/auth", authRoutes)
+
 app.use('/user',userRoutes)
 
 // app.get("/auth/profile", authenticate, (req, res) => {

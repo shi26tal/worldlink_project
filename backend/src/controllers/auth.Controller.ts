@@ -5,16 +5,17 @@ import { loginUser,registerUser,refreshTokenService } from "../services/auth.ser
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const { userName, name, email, password } = req.body;
+    const data  = req.body;
 
-    const existingUser = await userRepository.findByUserName(userName);
+    const existingUser = await userRepository.findByUserName(data.username);
+
     if (existingUser) {
       throw new Error("this user already exist");
     }
 
-    await registerUser({ name, userName, email, password });
+    await registerUser(data);
 
-    res.status(200).json({ message: "user created" });
+    res.status(201).json({ message: "user created" });
   } catch (error) {
     res.status(404).json({ message: "user not created" });
   }
@@ -23,16 +24,16 @@ export const register = async (req: Request, res: Response) => {
 export const login = async (req: Request, res: Response) => {
   try {
     // user enters email and password in the login form, we will get those values from req.body
-    const { userName, password } = req.body;
+    const { username, password } = req.body;
 
     // check if email and password are provided, if not return 400 bad request
-    if (!password || !userName) {
+    if (!password || !username) {
       return res
         .status(422)
         .json({ message: "Please provide userName and password" });
     }
 
-    const result = await loginUser({ userName, password });
+    const result = await loginUser({ username, password });
 
     res.status(200).json({ result });
   } catch (error) {

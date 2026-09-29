@@ -1,5 +1,5 @@
 import { MapPin, Phone, Search, Send } from "lucide-react";
-import Map from "../components/Map";
+import Map from "../Component/Map";
 
 const Benefits = () => {
   return (

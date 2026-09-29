@@ -7,7 +7,7 @@ import {
   ChevronDown,
   Info,
 } from "lucide-react";
-import TimeRangePicker from "../../components/TimeRangePicker";
+import TimeRangePicker from "../../Component/TimeRangePicker";
 
 const Toggle = ({
   id,

@@ -3,6 +3,7 @@ import Profile from "../assets/icon/profile-icon.png";
 import { Bell, LogOut, Menu, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/user.api";
+import { ConfirmationDialog } from "./ConfirmationDialog";
 
 type HeaderProps = {
   sidebarOpen: boolean;
@@ -35,13 +36,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
     fetchUser();
   }, []);
 
-  const handleLogout = () => {
-    const confirmLogout = window.confirm("Are you sure you want to logout?");
-
-    if (!confirmLogout) {
-      return;
-    }
-
+  const handleLogout = async () => {
     localStorage.removeItem("token");
     localStorage.clear();
 
@@ -100,13 +95,15 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
               />
             </div>
 
-            <button className="" onClick={handleLogout}>
-              <LogOut
-                size={24}
-                className="text-[#24389C] cursor-pointer"
-                strokeWidth={3}
-              />
-            </button>
+            <ConfirmationDialog onConfirm={handleLogout}>
+              <button type="button">
+                <LogOut
+                  size={24}
+                  className="text-[#24389C] cursor-pointer"
+                  strokeWidth={3}
+                />
+              </button>
+            </ConfirmationDialog>
           </div>
         </div>
       </div>

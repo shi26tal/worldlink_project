@@ -7,7 +7,7 @@ import {
   User,
 } from "lucide-react";
 import { useNavigate } from "react-router";
-import Map from "../../components/Map";
+import Map from "../../Component/Map";
 
 const NewConnectionPage = () => {
   const navigate = useNavigate();

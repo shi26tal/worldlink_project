@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ReferBanner from "../components/ReferBanner";
+import ReferBanner from "../Component/ReferBanner";
 import {
   Filter,
   Download,

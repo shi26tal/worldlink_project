@@ -5,26 +5,26 @@ import { registerType } from "../types/userType.js";
 // creating object containing all function
 export const userRepository = {
   // property   : value is an async arrow function
-  findByUserName: async (userName: string) => {
-    return await User.findOne({ where: { userName } });
+  findByUserName: async (username: string) => {
+    return await User.findOne({ where: { username } });
   },
 
-  createUser: async (userData: registerType) => {
-    return await User.create(userData);
+  createUser: async (userData : registerType)=> {
+    return await User.create(userData)
   },
 
   getUsers: async () => {
     return await User.findAll();
   },
 
-  getUserById: async (id:number)=> {
+  getUserById: async (id:string)=> {
     return await User.findByPk(id)
   },
 
   // update ko lagi id and data chaixa
 
   updateUsers: async (
-    id: number,
+    id: string,
     updateData: {
       name?: string;
       userName?: string;
@@ -49,7 +49,7 @@ export const userRepository = {
 
     return user;
   },
-  deleteUsers: async (id: number) => {
+  deleteUsers: async (id: string) => {
     const user = await User.findByPk(id);
 
     if (!user) {

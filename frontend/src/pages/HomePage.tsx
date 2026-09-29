@@ -1,6 +1,6 @@
 import GaugeComponent from "react-gauge-component";
 
-import ReferBanner from "../components/ReferBanner";
+import ReferBanner from "../Component/ReferBanner";
 
 import {
  

@@ -12,7 +12,7 @@ export const getAllUsersController = async(req:Request,res:Response) => {
         })
         
     } catch (error) {
-        res.status(500).json({message:"Failed to get all users"})
+        res.status(404).json({message:"Failed to get all users"})
     }
 
 }
@@ -30,7 +30,7 @@ export const getUserByIdController = async(req:Request,res:Response) => {
     } catch (error) {
 
         console.error(error)
-        return res.status(400).json({message:"getting user failed"})
+        return res.status(404).json({message:"getting user failed"})
         
     }
 }
@@ -56,7 +56,7 @@ export const updateUserController = async (req:Request,res:Response) => {
 
     } catch (error) {
         console.error(error)
-        return res.status(400).json({message:"update failed"})
+        return res.status(500).json({message:"update failed"})
     }
 }
 
@@ -74,7 +74,7 @@ export const deleteUserController = async(req : Request,res:Response) => {
 
     } catch (error) {
         console.error(error)
-        res.status(400).json({
+        res.status(500).json({
             message:"delete failed"
         })
     }
@@ -92,13 +92,13 @@ export const createAuthUserController = async (req:Request,res:Response) => {
 
         const user = await createAuthUserService({userName,name,email,createdBy,password})
 
-        return res.status(200).json({
+        return res.status(201).json({
             message:"user created",
             result: user
         })
 
     } catch (error) {
-        res.status(400).json({message:"user creation failed"})
+        res.status(500).json({message:"user creation failed"})
     }
 }
 
@@ -125,6 +125,6 @@ export const updateAuthUserController = async (req:Request,res:Response) => {
 
     } catch (error) {
         console.error(error)
-        return res.status(400).json({message:"update failed"})
+        return res.status(500).json({message:"update failed"})
     }
 }

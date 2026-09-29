@@ -8,7 +8,7 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
 
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
@@ -43,12 +43,12 @@ const LoginPage = () => {
     // }
 
     try {
-        const data = await loginApi(userName,password)
+        const data = await loginApi(username,password)
 
         console.log("login success",data)
 
         localStorage.setItem("token",data.result.token.accessToken)
-        localStorage.setItem("userId",JSON.stringify(data.result.user.id))
+        // localStorage.setItem("userId",JSON.stringify(data.result.user.id))
 
         navigate("/")
     } catch (error) {
@@ -82,8 +82,8 @@ const LoginPage = () => {
             </label>
             <input
               type="text"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
               placeholder="beomgyu"
               className="w-full p-4 rounded-lg border border-[#E5E7EB] bg-[#EEF3FF] text-base text-[#3f4653] outline-none focus:border-[#4169c5]"
             />

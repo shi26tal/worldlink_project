@@ -5,12 +5,13 @@ import { generateAccessToken } from "../utils/generateToken.js";
 import { registerType } from "../types/userType.js";
 
 type LoginData = {
-  userName: string;
+  username: string;
   password: string;
 };
 
-export const loginUser = async ({ userName, password }: LoginData) => {
-  const user = await userRepository.findByUserName(userName);
+export const loginUser = async ({ username, password }: LoginData) => {
+  
+  const user = await userRepository.findByUserName(username);
 
   if (!user) {
     throw new Error("User not found");
@@ -22,7 +23,7 @@ export const loginUser = async ({ userName, password }: LoginData) => {
     throw new Error("Invalid credentials");
   }
 
-  const token = generateAccessToken(user.id, user.userName);
+  const token = generateAccessToken(user.id, user.username);
 
   // const refreshToken = generateRefreshToken(user.id,user.userName)
 
@@ -30,12 +31,30 @@ export const loginUser = async ({ userName, password }: LoginData) => {
     token,
     user: {
       id: user.id,
-      name: user.name,
+      customer_name: user.customer_name,
       email: user.email,
-      userName: user.userName,
+      username: user.username,
     },
   };
 };
+
+
+
+export const registerUser = async (data: registerType) => {
+
+  const existingUser = await userRepository.findByUserName(data.username);
+
+  if (existingUser) {
+    throw new Error("this user already exist");
+  }
+
+  const user = await userRepository.createUser(data);
+
+  return user;
+};
+
+
+
 
 export const refreshTokenService = async (token: string) => {
   const decoded = jwt.decode(token) as {
@@ -53,26 +72,7 @@ export const refreshTokenService = async (token: string) => {
     throw new Error("User not found from token");
   }
 
-  const newAccessToken = generateAccessToken(user.id, user.userName);
+  const newAccessToken = generateAccessToken(user.id, user.username);
 
   return newAccessToken;
-};
-
-export const registerUser = async (data: registerType) => {
-  // const { email, userName, password, name } = data;
-
-  const existingUser = await userRepository.findByUserName(data.userName);
-
-  if (existingUser) {
-    throw new Error("this user already exist");
-  }
-
-  const user = await userRepository.createUser({
-    name: data.name,
-    email: data.email,
-    userName: data.userName,
-    password: data.password,
-  });
-
-  return user;
 };
