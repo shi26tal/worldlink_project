@@ -1,8 +1,9 @@
-
 import { Check, Eye, EyeOff } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { loginApi } from "../api/auth.api";
+import { loginSchema } from "@/validation/auth.validation";
+import { toast } from "sonner";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,9 +12,14 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [errors, setErrors] = useState<{
+    username?: string;
+    password?: string;
+  }>({});
+
   const navigate = useNavigate();
 
-  const handleLogin = async (e : React.FormEvent<HTMLFormElement>) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     // try {
@@ -42,20 +48,39 @@ const LoginPage = () => {
     //   console.error("login error", error);
     // }
 
-    try {
-        const data = await loginApi(username,password)
+    // validation
 
-        console.log("login success",data)
+    const result = loginSchema.safeParse({ username, password });
 
-        localStorage.setItem("token",data.result.token.accessToken)
-        // localStorage.setItem("userId",JSON.stringify(data.result.user.id))
+    if (!result.success) {
+      const fieldErrors = result.error.flatten().fieldErrors;
 
-        navigate("/")
-    } catch (error) {
-        console.log("error",error)
+      setErrors({
+        username: fieldErrors.username?.[0],
+        password: fieldErrors.password?.[0],
+      });
+
+      return;
     }
 
+    setErrors({});
 
+    try {
+      const data = await loginApi(username, password);
+
+      console.log("login success", data);
+
+      localStorage.setItem("token", data.result.token.accessToken);
+      // localStorage.setItem("userId",JSON.stringify(data.result.user.id))
+
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("Invalid credentials", {
+        position: "top-center",
+        className: "bg-red"
+      });
+    }
   };
 
   return (
@@ -87,6 +112,9 @@ const LoginPage = () => {
               placeholder="beomgyu"
               className="w-full p-4 rounded-lg border border-[#E5E7EB] bg-[#EEF3FF] text-base text-[#3f4653] outline-none focus:border-[#4169c5]"
             />
+            {errors.username && (
+              <p className="mt-1 text-sm text-red-500">{errors.username}</p>
+            )}
           </div>
 
           {/* password */}
@@ -94,6 +122,7 @@ const LoginPage = () => {
             <label className="absolute left-3 -top-2 bg-white px-1 text-xs text-[#6B7280]">
               Password
             </label>
+
             <input
               type={showPassword ? "text" : "password"}
               value={password}
@@ -103,13 +132,16 @@ const LoginPage = () => {
             />
 
             <button
-            type="button"
+              type="button"
               onClick={() => setShowPassword(!showPassword)}
               className="absolute right-3 top-1/2 -translate-y-1/2 text-[#6B7280]"
             >
-              {showPassword ? <Eye size={18} /> : <EyeOff size={18} /> }
+              {showPassword ? <Eye size={18} /> : <EyeOff size={18} />}
             </button>
           </div>
+          {errors.password && (
+            <p className="mt-1 text-sm text-red-500">{errors.password}</p>
+          )}
 
           <div className="flex items-center justify-between mt-5 mb-6">
             <label className="flex items-center gap-2 cursor-pointer">
