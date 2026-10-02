@@ -25,7 +25,7 @@ const Header = ({ sidebarOpen, setSidebarOpen }: HeaderProps) => {
     const fetchUser = async () => {
       try {
         const data = await getUser();
-        // console.log("data:",data)
+        console.log("data:",data)
 
         setUser(data.result);
       } catch (error) {

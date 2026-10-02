@@ -1,10 +1,9 @@
 import axios from "axios"
-import {jwtDecode} from "jwt-decode"
 
  const API_URL = "http://localhost:5002"
 
  type JWTPayload = {
-    id: number
+    id: string
  }
 
 export const getUser = async ()=> {
@@ -14,13 +13,15 @@ export const getUser = async ()=> {
         throw new Error("token not found")
     }
 
-    const userId = jwtDecode<JWTPayload>(token)
+    const payload = JSON.parse(atob(token.split(".")[1])) as JWTPayload;
 
-    const response = await axios.get(`${API_URL}/user/${userId.id}`,{
-        headers:{
-            Authorization : `Bearer ${token}`
-        }
-    })
+  const response = await axios.get(`${API_URL}/user/${payload.id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  console.log("data:",response)
 
-    return response.data
+  return response.data
+
 }
